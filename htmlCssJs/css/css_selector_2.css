@@ -1,0 +1,69 @@
+.div-hover:hover {
+    background-color:coral;
+}
+
+.div-active:active {
+    background-color: blue;
+    color: white;
+}
+
+.input-focus:focus {
+    background-color: orange;
+}
+
+/* focus out -> blur
+하지만 css에서는 마우스 바깥 상태가 기본이므로 따로 이벤트 없음*/
+
+a:visited {
+    color: red;
+}
+
+/* 해석 주의! 앞부터 순서대로 해석X
+클래스 fruits의 하위요소 중 span이 first-child라면 */
+.fruits span:first-child{
+    color: red;
+}
+
+.fruits h3:last-child {
+    color:blue;
+}
+
+.fruits span:nth-child(2) {
+    color: red;
+}
+
+/* n=0부터 시작 */
+.fruits2 span:nth-child(2n+1) {
+    color: blue;
+}
+
+/* not */
+.fruits-2 span:not(.wm) {
+background-color: aqua;
+}
+
+.fruits *:not(span) {
+    background-color: antiquewhite;
+}
+
+/* 실습_가상클래스 선택자 */
+h1:hover {
+    color: red;
+}
+
+a:active {
+    background-color: blue;
+}
+
+input:focus {
+    background-color: orange;
+}
+
+/* 실습_줄무늬 */
+.stripes div:nth-child(2n+1) {
+    background-color: navy;
+    color: white;
+}
+.stripes div:nth-child(2n) {
+    background-color: yellow;
+}

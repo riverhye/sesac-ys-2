@@ -1,0 +1,53 @@
+/* 하위 선택자 */
+/* div .apple {
+    color:blueviolet;
+} */
+
+
+/* 자식 선택자 */
+div > .apple {
+    color: brown;
+}
+/* 인접 형제 선택자(다음 하나) */
+h1 + ul {
+    color: blue;
+}
+
+/* 일반 형제 선택자(다음 형제 모두) */
+h1 ~ ul {
+    color: blue;
+}
+
+/* a이면서 b인 태그만 선택 */
+/* id가 fist이면서 class가 apple인 경우
+#first.apple or .apple#first
+(띄어쓰기 없어도 되고, 순서 바꿔도 되고)*/
+
+/* 실습_복합 선택자(사파리) */
+.zoo ~ .lion {
+    background-color: red;
+}
+
+.zoo .lion {
+    background-color: greenyellow;
+}
+
+.zoo #tiger {
+    background-color: yellow;
+}
+
+.lion {
+    color: sienna;
+}
+
+.zoo .lion {
+    font-weight: bold;
+}
+
+#tiger + li {
+    background-color: skyblue;
+}
+
+.zoo .lion + .lion ~ li {
+    background-color: orange;
+}
