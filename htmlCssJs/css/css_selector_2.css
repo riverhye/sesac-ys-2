@@ -97,6 +97,7 @@ input[name=name] {
 input[disabled] {
     background-color: red;
 }
+/* disabled 속성은 boolean(T/F) 형식이고 deafult가 false */
 
 input[placeholder=name] {
     background-color: orange;
