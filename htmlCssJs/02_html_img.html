@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html 태그 수업2</title>
+</head>
+<body>
+    <!-- 현재 위치 : C:\Users\SBA_USER\Desktop\sesac-ys-2 -->
+        <!-- ./dune.webp : 현재 위치에 있는 "dune.webp" 파일 -->
+        <!-- ../ : 한 단계 앞(부모) 위치로 이동 -->
+    <img src="./dune.webp" alt="dune poster" width="120" height="50"/>
+                            <!-- 인터넷이 느리거나 img src 주소가 변경된 경우 등 정상작동을 안 할 때 이미지 대신 메시지 -->
+
+    <a href="https://naver.com" target="_self">Go to naver</a>
+    <a href="./01_html_prac_cafe.html" target="_blank" title="cafe menu">Go to today's practice</a>
+    <!-- inline이네 <a>, <img> 모두 -->
+    <hr />
+    <form>
+        name: <input type="text" name="name" />
+        <br />
+        email: <input type="email" />
+        <br />
+        password: <input type="password" name="pw"/>
+        <br />
+        hobby:
+        <input type="checkbox" name="hobby" value="watch movie"/>watch movie
+        <input type="checkbox" name="hobby" value="exercise"/>exercise
+        <br />
+        gender:
+        <input type="radio" name="gender" value="woman" /> woman
+        <input type="radio" name="gender" value="man"/> man
+        <br />
+        older than 15:
+        <input type="radio" name="user_older_15" value="true"/> yes
+        <input type="radio" name="user_older_15" value="false"/> no
+        <br />
+        born in: 
+        <input type="date" name="birth"/>
+        <br />
+        color: 
+        <input type="color" name="choose_color" />
+        <br />
+        range:
+        <input type="range" name="range" min="0" max="100" step="10"/>
+        <br />
+        <input type="file" name="image">
+        <br />
+        <input type="button" value="submit"/>
+        <button>submit</button>
+        <select name="select_option">
+            <optgroup label="op1~2">
+                <option value="op1">op1</option>
+                <option value="op2">op2</option>
+            </optgroup>
+            <optgroup label="op3~4">
+                <option value="op3">op3</option>
+                <option value="op4">op4</option>
+            </optgroup>
+        </select>
+
+    </form>
+    </body>
+</html>
