@@ -67,3 +67,41 @@ input:focus {
 .stripes div:nth-child(2n) {
     background-color: yellow;
 }
+
+div.before-el::before {
+    content: "HOT";
+    background-color:red;
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+}
+
+div.after-el::after {
+    content: "after!";
+}
+
+/* 실습_가상 요소 선택자 */
+div.box::before {
+    content: "taxi";
+}
+
+div.box::after {
+    content: "hurry!";
+}
+
+input[name=name] {
+    background-color: tomato;
+}
+
+/* 실습_속성 선택자 */
+input[disabled] {
+    background-color: red;
+}
+
+input[placeholder=name] {
+    background-color: orange;
+}
+
+input:not([placeholder]) {
+    background-color: blue;
+}
