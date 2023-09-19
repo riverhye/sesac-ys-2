@@ -27,9 +27,6 @@
     align-content: center;
 }
 
-
-
-
 /* 하나로 묶어서 세로 */
 .wrap-container-5 {
     margin-top: 20px;
@@ -55,7 +52,6 @@
 
 
 
-
 /* 과제_Headers */
 .box {
     background-color: lightgray;
@@ -67,14 +63,15 @@
     align-items: center;
 }
 
-.menu {
+.menu,
+.box .menu div {
     margin: 10px;
 }
 
-.first-menus {
+.box-menus {
     display: flex;
 }
 
-.box .menu div {
-    margin: 10px;
+.fourth-box .box-menus div {
+    margin-left: 0;
 }
