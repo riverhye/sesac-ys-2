@@ -1,0 +1,80 @@
+.wrap-container {
+    width: 500px;
+    height: 500px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap-item {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    margin: 1px;
+}
+
+/* 한줄 세로 정렬 */
+.wrap-container-4 {
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+/* 하나로 묶어서 가로*/
+.wrap-container-2 {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+
+
+
+/* 하나로 묶어서 세로 */
+.wrap-container-5 {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+}
+
+/* 각각의 줄에 가로 */
+.wrap-container-3 {
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* 각각의 줄에 세로 */
+.wrap-container-6 {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+
+
+
+
+/* 과제_Headers */
+.box {
+    background-color: lightgray;
+    height: 40px;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    margin: 10px;
+}
+
+.first-menus {
+    display: flex;
+}
+
+.box .menu div {
+    margin: 10px;
+}
