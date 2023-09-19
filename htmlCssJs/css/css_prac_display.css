@@ -49,9 +49,6 @@
 }
 
 
-
-
-
 /* 과제_Headers */
 .box {
     background-color: lightgray;
@@ -74,4 +71,23 @@
 
 .fourth-box .box-menus div {
     margin-left: 0;
+}
+
+
+/* ul ver */
+ul {
+    height: 40px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+/* ul에는 기본적으로 padding이 있다 */
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0px 10px;
 }
