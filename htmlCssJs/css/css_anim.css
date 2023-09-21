@@ -1,0 +1,47 @@
+
+/* prac_circle */
+
+.circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: yellow;
+    /* animation: turnCircle 3s 6; */
+}
+
+@keyframes turnCircle {
+    0%,100% {
+        top:0px;
+        left:0px;
+    } 
+    25% {
+        top: 0px;
+        left: 150px;
+        }
+    50% {
+        left: 150px;
+        top: 150px;
+    }
+    75% {
+        top: 150px;
+        left: 0px;
+    }
+}
+
+p {
+    display: block;
+    position: relative;
+    animation:fromRightDiv 1.5s linear;
+}
+
+@keyframes fromRightDiv{
+    0% {
+        margin-left: 900px;
+        width: 300%;
+    }
+    100% {
+        margin-left: 0px;
+        width: 100%;
+    }
+}
