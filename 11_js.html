@@ -147,6 +147,80 @@
         result = ++num6
         console.log(result) //9
         
+        
+        // -----function-----
+        // 쓰려면 함수 호출 -함수명();- 필요
+
+        // 명시적 함수로 선언 :
+        // 호출 먼저 하고 선언해도 됨.
+        funEx1();
+        //호이스팅(함수 선언문이 호출 위에 있다고 간주) O
+        function funEx1 () {
+            console.log("hello1");
+        }
+
+                        //함수 표현식으로 선언 (익명함수 사용)
+                        //호이스팅 X -> 선언부터 해야
+        const funEx2 = function () {
+            console.log("hello2");
+        }
+
+        funEx2();
+
+        //함수 표현식으로 선언 (호출 안 한 상태)
+        const funEx3 = () => {
+            console.log("hello");
+        }
+
+        // 함수 형태는 매개변수 여부, 반환값(return) 여부에 따라 달라짐
+
+        // 매개변수X 반환값X
+        function funcEx1 () {
+            console.log("funcEx1")
+        }
+
+        // 매개변수O 반환값X
+        // 매개변수 : 함수 외부에서 함수 내부로 값 전달하고 싶을 때
+        function funcEx2 (numm) {
+            console.log("numm")
+        }
+        let numm = 5;
+        funcEx2(numm);
+
+        // 매개변수X 반환값O
+        // 반환값: 함수 내부의 값을 함수 외부로 전달하고 싶을 때
+
+        function funcEx3 () {
+            console.log("funcEx3");
+            return "hello";
+        }
+        let hello = funcEx3(); //=> 보통의 쓰임 : 함수 연산 끝내고 return값을 외부 변수에 저장하여 사용
+
+        // 매개변수O 반환값O
+        function funcEx4(numb8, numb9) {
+            console.log("funcEx4");
+            return numb8 + numb9;
+        }
+
+        let sum = funcEx4(2, 3);
+        console.log(sum);
+
+        // prac_function(1)
+        let multifly = function (numb1, numb2) {
+            return numb1 * numb2;
+        }
+
+        let numbResult = multifly(4,90);
+        console.log(numbResult);
+
+        
+        // prac_function(2)
+        function square(number) {
+            console.log(number**2);
+        }
+
+        let number = 5;
+        square(number);
     </script>
 </body>
 </html>
