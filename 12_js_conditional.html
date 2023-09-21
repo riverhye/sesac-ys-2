@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js conditional</title>
+</head>
+<body>
+    <script>
+        let name = "une";
+        if(name === "une") {
+            console.log(`Hi! ${name}`);
+        }
+        else {
+            console.log("who are u?");
+        }
+
+        
+        let number = 5;
+        // 중첩이 3개 이상이면 가독성 나쁨
+        if(number < 7) {
+            if (number > 3) {
+                console.log("a");
+            if (number >7) {
+                console.log("d");
+            }
+             else {
+                console.log("b");
+            }
+        } } else {
+            console.log("c");
+        }
+    
+
+        // prac_if
+        let age = Number(prompt("How old are you?"));
+        if (age>=20) {
+            console.log("adult");
+        } 
+        //if에서 이미 20살 이상은 제외되었음!
+        else if (age>=17) {
+            console.log("highschool student");
+        }
+        else if (age<17 && age>=14) {
+            console.log("middleschool student");
+        } else if (age<14 && age>=8) {
+            console.log("elementaryschool student");
+        }
+        else if (age<8 && age>=0) {
+            console.log("infant");
+        }
+        else {
+            console.log("please write your age correctly")
+        }
+
+
+        // switch문은 간단히 값 비교할 때
+        number = 3;
+        switch (number) {
+            case 1: //number가 1일 경우
+                console.log("1"); //1을 콘솔에 찍겠다
+                console.log("1");
+                break; //case가 1일 경우 끝! break 만나야
+                //break 없으면, case1은 이미 ok되었다는 가정으로 case 확인하지 않고 바로 실행됨.
+            case 2:
+                console.log("2");
+                break;
+            case 3:
+                console.log("3");
+                break;
+            default: //위 case가 부합하지 않을 때
+                console.log("?");
+                break;
+        }
+
+
+        // 3항연산자
+        let username = "une"
+        // 조건 ? 참일 때 실행할 코드(only 1 line) : 거짓일 때 실행할 코드(only 1 line)
+        username == "une" ? console.log("hihi") : console.log("what?!");
+
+        //특정 변수에 조건에 따라 다른 값 넣기 - 위의 1줄문과 동일
+        let msg = username == "une" ? "hi!" : "what..?";
+        console.log(msg);
+
+
+        //prac_시간
+        let now = new Date().getHours();
+        now >=0 && now < 12 ? console.log("오전") : console.log("오후");
+    </script>
+</body>
+</html>
