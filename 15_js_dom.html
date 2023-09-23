@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM</title>
+</head>
+<body>
+    <div id="box" class="box"> hello </div>
+    <div id="container" class="box item"> hello </div>
+    <span>hello span</span>
+
+    <input type="text" name="email" />
+
+    <div id="box2">
+        <b>hello</b> box2
+    </div>
+    <script>
+        console.log(document.body)
+        
+        let elById = document.getElementById("box")
+        console.log(elById)
+
+        //Element's'이므로 배열 안에 들어간 것으로 표현(하나라도)
+        let elByClass = document.getElementsByClassName("box")
+        console.log(elByClass)
+        console.log(elByClass[0])
+        console.log(elByClass[1])
+
+        //주로 (id나) class로 선택
+
+        let elByTag = document.getElementsByTagName("span")
+        console.log(elByTag)
+        let elByName = document.getElementsByName("email")
+        console.log(elByName)
+
+        // 선택자를 이용하여 요소 선택 (위에서부터 딱 하나)
+        let elBySelector = document.querySelector(".box")
+        // 발견한 모든 요소 선택
+        let elBySelectorAll = document.querySelectorAll(".box")
+        console.log(elBySelector)
+        console.log(elBySelectorAll)
+
+        let elBox2 = document.getElementById("box2")
+        // let elBox2 = document.querySelector("#box2")
+        console.log(elBox2)
+        console.log(elBox2.innerText)
+        console.log(elBox2.innerHTML)
+        //요소 안에 들어간 모든 것 = content
+
+        elBox2.innerText = "Hello une"
+        //text로만 인식
+        elBox2.innerHTML = "hello <b>une</b>"
+        //innerHTML : tag도 추가 가능
+    </script>
+</body>
+</html>

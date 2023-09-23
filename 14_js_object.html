@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = 5;
+        let num2 = num;
+        num2 += 5;
+        console.log(num, num2);
+        //메모리주소(공간)가 아닌 값을 참조 -> num과 num2는 서로 다른 공간
+
+        let arr = [1,2,3,4,5];
+        let arr2 = arr;
+        arr2.reverse()
+        console.log(arr, arr2)
+        //object(배열, 딕셔너리 등)는 메모리 주소를 참조값으로 저장해서 같은 공간이 됨
+        //즉 변수를 또 다른 변수로 할당하는 경우, 하나(arr)를 부르는 이름이 여럿(arr,이 된 느낌
+
+        // cf. object를 깊은 복사로
+        let arr3 = [1,2,3,4];
+        let arr4 = arr3.slice(); // 인자가 없으므로 그대로 가져옴(자르지 않음)
+        // 즉 반환값을 새로 만들어 arr4에 대입한 것
+        arr4.reverse()
+        console.log(arr3,arr4)
+
+        let date = new Date();
+        // 인자에 특정날짜 입력할 수 있다 "2023-09-22" 시간은 9시 디폴트
+        // year, month, date 등을 가져오거나 특정일 추가(+3)
+        // 서비스가 무엇이냐에 따라 사용 빈도수가 달라진다.
+        console.log(date.getFullYear());
+        console.log(date.getMonth()+1) //month는 -1로 나와서 +1 기입해야
+        console.log(date.getDay()) //월부터 시작해서 숫자로 나옴
+        console.log(date.getTime()) //1917.1.1 0시부터 흐른 밀리초
+        console.log(date.getHours())
+
+        //왜 안 되지?
+        let expired = new Date("2023-10-09").getTime;
+        let today = new Date().getTime;
+        //숫자로 비교하면 편하니까 밀리초 활용
+        if (expired < today) {
+            console.log("EXPIRED!")
+        } else {
+            console.log("아직 사용 가능")
+        }
+    </script>
+</body>
+</html>
