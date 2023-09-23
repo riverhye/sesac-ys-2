@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 반복문</title>
+</head>
+<body>
+    <!-- if와 반복문은 제대로 알고 넘어가기 -->
+    <script>
+        // for문
+        // 같은 코드 반복할 때
+        for( let i = 0; i < 10; i++) {
+            console.log(i,"안녕하세요");
+        }
+        console.log("DONE");
+
+        // 배열과 for문을 함께 자주 써서 for of문이 생긴 것
+        // why? 비슷한 특징을 가진 값들의 꾸러미이기 때문에 같은 코드를 반복할 일이 많다.
+        // 배열은 0부터 시작하기에, 주로 변수 0부터 시작하여 원하는 값-1까지 조건 반복
+
+        let arr = [[], []]
+        // 중첩 for문
+        // 가독성, 로드 시간 등 때문에 웬만하면 삼중으로 만들지 않는 게 좋다. 다만 코테에선 쓰이기도 함.
+        for(let i = 0; i < 5; i++) {
+            for(let j = 0; j <5; j++) {
+                console.log(`i: ${i}, j: ${j}`);
+            }
+        }
+
+        // 초기값; 조건식; 증감문
+        // 2씩 키울 때 반드시 변수에 대입해주어야 한다.
+        for(let i = 0; i < 10; i=i+2) {
+            console.log(`i: ${i}`);
+        }
+
+        for(let i = 10; i > 0; i--) {
+            console.log(`i:${i}`);
+        }
+
+        for(let i = 10; i > 0; i=i-5) {
+            console.log(`i: ${i}`);
+        }
+
+        // for문과 while문
+        // for문: 반복 횟수 특정할 때(조건이 있으므로)
+        // while문: 반복 횟수 특정할 수 없을 때(물론 횟수 특정할 때도 사용할 수 있긴 하다)
+        // ex. 사용자가 입력한 값이 의도와 맞지 않을 때
+
+        for(let i=0; i<10; i++) {
+            console.log(i);
+        }
+
+        let i = 0; //초기값: 반복문 내부에 적을 수 없기 때문에 외부에 작성
+        while(i < 10) {
+            //조건이 true일 경우 실행할 명령문
+            //조건 자체에 true를 넣어서 실행할 수도 있다.
+            console.log(i);
+            i++; //증감문: while문 마지막에. 요걸 안 쓰면 무한루프에 빠진다.. 딱 끝나는 조건을 써줘야 빠져나갈 수 있음.
+            let j = 0;
+            while (j < 10) {
+                console.log(j);
+                j++;
+            } //하지만 이런 이중문은 while문에서는 자주 쓰지 않는다.
+        }
+        //결론: 횟수 특정할 수 있을 땐 for문을 쓰는 게 좋다. 식에 증감문이 있어서 무한루프 빠지는 오류를 적게 범함.
+
+        // let number = Number(prompt("양수를 입력하세요."))
+        // while(number < 0) {
+        //     number = Number(prompt("양수를 입력하세요."))
+        // }
+
+        //while(true) {
+            // let number = Number(prompt("양수를 입력하세요"));
+                                //prompt 동작 중에는 그 다음 코드가 안 읽혀서, prompt가 끝날 때 한 번에 값이 보임
+                                    // ex. 3(반복 실행된 횟수) hi
+            //if(number > 0) break;
+            //break는 반복문 강제 종료. 한 줄만 if 쓸 땐 중괄호 없이 그냥.
+            //console.log("hi"); //break 만나면 바로 while문 탈출.
+        }
+       //console.log("끝");
+
+        //continue: 반복문을 다음으로 넘길 때
+        for(let i=0; i<10; i++) {
+            if (i%2 == 0) continue; // continue 실행 시 다음줄 읽지 않고
+            console.log(i);
+
+            //바로 여기로 jump -> 반복문 최상단 다시
+            //즉 다음줄 실행하지 않고, 바로 다시 반복문 실행
+        }/
+
+        //while문과 do-while문
+        while(condition) {
+            //명령문
+        }
+
+        do {
+            // let number = Number(prompt("양수를 입력하세요"));
+            // 명령문 - 처음 한번은 무조건 실행하는 구조
+        } while(number <0)
+
+
+    </script>
+</body>
+</html>
