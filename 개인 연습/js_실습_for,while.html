@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prac</title>
+</head>
+<body>
+    <script>
+        // 0부터 100까지 숫자 더하기
+        let numberSum=0;
+                    //조건식: 초기값으로 설정한 변수의 범위를 제어
+        for(let i=0; i<101; i++) {
+            numberSum+=i; //명령문1
+            console.log("0부터 100 더하기",numberSum); //명령문2
+        }
+        /* 초기식,조건식,명령문1     명령문2     증감문
+            i=0,s=0               console(0) -> i=1
+            i=1,s=1(0+1)          console(1) -> i=2
+            i=2,s=3(2+1)          console(3) -> i=3
+            i=3,s=6(3+3)          console(6) -> i=4
+            i=4,s=10(6+4)         console(10) -> i=5
+            i=5,s=15(10+5)        console(15) -> i=6
+            i=6,s=21(15+6)        console(21) -> i=7 */
+        console.log(numberSum); // 반복문 가장 마지막의 값: 5050
+
+
+        //0부터 100까지 숫자 중에서 2의 배수 혹은 5의 배수 총합
+        let sum=0;
+        for(let i=0; i<101; i++) { //0부터 100까지 숫자 중에서
+            if(i%2==0 || i%5==0) { //2의 배수거나 5의 배수라면
+                sum+=i;            //sum에 그 값을 계속 더해간다. (sum+i는 반복문 한번 했을 때의 값, sum+=i는 이전 결과값인 sum에다가 증가한 i값을 더하므로 반복문 결과가 계속 쌓임)
+            }
+        }
+        console.log(sum); //3050
+        /* console.log를 if문, for문 각각에 작성하면?
+        둘다 증감문 전의 명령문 결과를 기록하는데, for문은 if 조건문을 통과하지 못해 sum에 변화 없는 값도 반환
+        if문은 조건에 충족된 값만 반환 */
+
+
+        //0부터 10000까지 13의 배수이자 홀수인 수
+            //for문
+        for(let i=0; i<10001; i++) {
+            if(i%13==0 && i%2==1) {
+                console.log(i);
+            }
+        }
+            //while문 (true)
+        while(true) {
+            let i=Number(prompt("0부터 10000사이"));
+            if(i%13==0 && (i%2)!=0) {
+                console.log(i);
+                break;
+            }
+        }
+
+            //while문 : 변수를 외부에 입력하기 때문에 기존 변수명과 겹치는지 확인해야 하므로, while(true)가 사용에 용이하다고 생각한다.
+        let i=Number(prompt("숫자 확인"))
+        while(0<=i<=10000) {
+            if(i%13==0 && (i%2)!=0) {
+                console.log(i)
+            }
+            break; //break는 if문에서 끝내든 while문에서 끝내든 작동하지만, '반복문을 끝낸다'는 본의미를 생각해 while문에서 끝내는 게 적절하지 않을까 싶다.
+        }
+
+            //prompt로 값을 받아서
+        let usernum = Number(prompt("0부터 10000 사이의 숫자를 입력하세요."));
+        while(usernum<10001) {
+            if(usernum%13==0 && usernum%2==1) {
+                console.log(usernum);
+                break;
+            } else {
+                alert("땡");
+                break;
+            }
+        } 
+
+
+        //구구단 만들기
+        for(i=2;i<10;i++) {
+            console.log(`---${i}단---`)
+            for(j=1;j<10;j++) {
+                console.log(`${i} x ${j} = ${i*j}`);
+            }
+        }
+
+
+        //prompt 구구단 만들기
+        let usernumber=Number(prompt("몇 개의 별을 만들까요?"));
+        let star="" 
+        for(let i=1; i<=usernumber; i++) { //user가 수를 1부터 입력하므로 1부터 입력값까지 포함.
+            for(let j=1; j<=i; j++) {
+                star+="*"; // star가 들어갈 자리마다 * 채우기
+                console.log("중첩for문",star)
+            }
+            star+="\n" /*중첩 for문 위에 작성할 수 있지만, 해석상 이곳에 두어야 좋을 듯하다.
+                         줄바꿈*/
+            console.log("for문", star)
+        }
+        console.log(star); //star 변수를 함수 밖에 선언해서 출력도 바깥
+
+        /*중첩일 때의 안쪽 for문은 늘어난 숫자만큼 횟수를 반복한다.
+        총 횟수: 3일 때
+        1회차: 겉 1회 -> 안 1회
+        2회차: 겉 1회 -> 안 2회
+        3회차: 겉 1회 -> 안 3회
+        끝 */
+
+        /* usernumber=2
+        1회차
+        i: 1 -> 줄바꿈 1개
+            j:1 -> star에 공백 별에 * 하나 넣어 총 1개 => 1줄 1개의 별
+        i: 2 -> 줄바꿈 1개 더 추가해서 2개
+            j:2 -> star에 별 2개 추가해서 총3개 => 2줄 3개의 별
+        */
+
+    </script>
+</body>
+</html>
