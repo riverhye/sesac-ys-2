@@ -114,7 +114,9 @@
         //.length : 길이 반환 (숫자로)
         console.log(arr.length); //5
 
-        //.splice(idx, cnt) : idx부터 cnt번까지 값 제거
+        /*.splice(idx, cnt) : 
+        idx부터 cnt번까지 값 제거
+        매개변수로 음수도 입력 가능 */
         arr.splice(1, 2);
         console.log("splice", arr); // [1, 4, 5]
 
@@ -132,11 +134,48 @@
         //.reverse() : 배열 순서 거꾸로
         console.log("reverse", arr.reverse());
 
+// ~~~~~~~~~join 다시 찾아보기
+        /*.join([seperator]) : 
+        배열의 문자열을 하나로 합치기
+        매개변수 생략시 배열 원소 쉼표로 구분*/
+        //  str.join("*")
+        // console.log("join", str);
 
 
+    // 문자열 내장 메서드
+    let str =" Have A Nice Day ~! ";
+
+    //.length : 공백 포함 문자열 길이 반환
+    console.log("length", str.length);
+
+    //.toUpperCase() : 문자열 전체 대문자
+    console.log("upper", str.toUpperCase());
+
+    //.toLowerCase() : 문자열 전체 소문자
+    console.log("lower", str.toLowerCase());
+
+    //.indexOf(val) : val인 가장 첫번째 요소의 인덱스
+    console.log("indexOf", str.indexOf("a"));  
+
+    //.slice(idx1, idx2) : idx1부터 idx2까지 추출
+    console.log("slice", str.slice(1,4));
+
+    //.replace(str1, str2) : str1을 str2로 (첫번째 요소만)
+    console.log("replace", str.replace("a", "p"));
+    //.replaceAll(str1, str2) : 모든 str을 str로
+    console.log("replaceAll", str.replaceAll("a", "p"));
+
+    //.repeat(n) : n번 반복
+    console.log("repeat", str.repeat(2));
 
 
+    //.trim() : 양끝 공백 제거
+    console.log("trim", str.trim());
+    console.log("re-length", str.length);
+//~~~공백 제거했는데 길이가 20..
 
+    //.split(val) : 매개변수 기준으로 자른 str을 배열로
+    console.log(str.split(""));
     </script>
 </body>
 </html>
