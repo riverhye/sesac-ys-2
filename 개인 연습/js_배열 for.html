@@ -91,6 +91,7 @@
         })
         console.log("find", arr_find); //5
 
+
     //배열 내장 메서드
         //.push(val) : 배열 맨끝에 값 추가
         let arr_push = arr.push(9);
@@ -168,14 +169,20 @@
     //.repeat(n) : n번 반복
     console.log("repeat", str.repeat(2));
 
-
     //.trim() : 양끝 공백 제거
     console.log("trim", str.trim());
     console.log("re-length", str.length);
-//~~~공백 제거했는데 길이가 20..
+//~~~~~~~~공백 제거했는데 길이가 20..
 
     //.split(val) : 매개변수 기준으로 자른 str을 배열로
     console.log(str.split(""));
+
+
+    /* 메서드 체이닝에서 반환값이 있는지 어떻게 알까?
+    대체로 console로 따로 찍어봐야 하는 것들은 반환값이 없고 pop, push, unshift, shift, ...
+    console로 변화를 바로 확인할 수 있는 건 반환값이 있는 것 같다.
+    */
+
     </script>
 </body>
 </html>
