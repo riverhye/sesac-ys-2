@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 with for, 메서드</title>
+</head>
+<body>
+    <script>
+        //1~100까지 배열의 합
+        let numbers=[];
+        for(let i=1;i<=100;i++) {
+            numbers.push(i);
+        }
+
+        let sum1=0;
+        let sum2=0;
+        let sum3=0;
+
+        //for문
+        for(let i=0; i<numbers.length; i++) {
+            sum1 += numbers[i];
+        }
+        console.log(sum1);
+        /* 단점 : 
+            배열의 길이 찾고, 새 변수를 선언하여 그 변수를 인덱싱하는 등 배열 순회 과정이 번거롭다.
+        */
+
+        //forEach 메서드 : ES5
+        numbers.forEach((num) => {
+            sum3 += num
+        })
+        console.log(sum3)
+
+        /* 단점 : 
+            1) await를 루프 내부에 쓸 수 없다.
+            2) undefined를 반환하기 때문에 break,continue,reutrn 구문을 사용해서 중간에 루프 탈출할 수 없다.
+            map()이나 reduce()는 구문 사용 가능
+        */
+
+        //for of 반복문 : ES6에 추가된 기능
+        for(number of numbers) {
+            sum2 += number;
+        }
+        console.log(sum2);
+
+        /*
+            1) 모든 루프를 원하는 대로(key만 접근, key와 value 모두 접근) 순회
+            2) for-await-of 가능
+            3) break, cotinue 사용 가능
+            다만 프론트엔드 개발에서는 읽기 편한 map이나 reduce로 충분히 해결할 수 있다.
+        */
+
+            //.entries() key와 value 모두에 접근하는 메서드
+            let alpha =["a","b","c"];
+            console.log(alpha);
+            for ([key, value] of alpha.entries()) {
+                console.log(key, value);
+            }
+
+            //.values() value에 접근하는 메서드
+            for(value of alpha.values()) {
+                console.log(value);
+            }
+            //.keys() key에 접근하는 메서드
+            for(key of alpha.keys()) {
+                console.log(key);
+            }
+
+
+     //익명 함수 배열 메서드 (forEach 포함)
+     //메서드도 함수의 일종이므로, 호출을 위해 '소괄호()' 기입.
+    let arr = [1,2,3,4,5];
+    console.log("arr",arr);
+
+        //.map(func) : 연산 결과를 '새 배열'로 반환
+        let arr_map = arr.map(numb => {
+            return numb + 3;
+        })
+        console.log("map", arr_map); //[4, 5, 6, 7, 8]
+
+        //.filter(func) : 조건에 부합하는 요소만 '배열'로 반환
+        let arr_filter = arr.filter(numb => {
+            return numb > 3;
+        })
+        console.log("filter", arr_filter); //[4, 5]
+
+        //.find(func) : 조건에 부합하는 '첫번째 값' 반환
+        let arr_find = arr.find(numb => {
+            return numb > 4;
+        })
+        console.log("find", arr_find); //5
+
+    //배열 내장 메서드
+        //.push(val) : 배열 맨끝에 값 추가
+        let arr_push = arr.push(9);
+        console.log("push", arr); //[1, 2, 3, 4, 5, 9]
+
+        //.unshift(val) : 배열 맨앞에 값 추가
+        arr.unshift(7);
+        console.log("unshift", arr); //[7, 1, 2, 3, 4, 5, 9]
+        
+        //.pop() : 배열 맨끝 값 제거
+        arr.pop();
+        console.log("pop", arr); // [7, 1, 2, 3, 4, 5]
+        
+        //.shift() : 배열 맨앞 값 제거
+        arr.shift();
+        console.log("shift", arr); // [1, 2, 3, 4, 5]
+
+        //.includes(el) : 해당 요소 여부 확인
+        console.log(arr.includes(10)); //false
+
+        //.length : 길이 반환 (숫자로)
+        console.log(arr.length); //5
+
+        //.splice(idx, cnt) : idx부터 cnt번까지 값 제거
+        arr.splice(1, 2);
+        console.log("splice", arr); // [1, 4, 5]
+
+        /*.slice(idx1, [idx2]) : 
+        idx1에서 idx2까지 자르기. 자르기만 해서 기존 배열 유지
+        문자열, 배열 모두 사용 가능 */
+        arr.slice("");
+        console.log("slice", arr); // [1, 4, 5]
+
+        /*.indexOf(val) : 해당 값의 index 찾기
+        문자열, 배열 모두 사용 가능
+        해당값 없으면 -1 반환 */
+        console.log("indexOf", arr.indexOf(4)); //1
+
+        //.reverse() : 배열 순서 거꾸로
+        console.log("reverse", arr.reverse());
+
+
+
+
+
+
+    </script>
+</body>
+</html>
