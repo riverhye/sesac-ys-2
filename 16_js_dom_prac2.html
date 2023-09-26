@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>방명록 만들기</title>
+    <style>
+
+    </style>
 </head>
 <body>
     <div>
-        <div>작성자 <input type="text" name="name" /></div>
-        <div>내용 <input type="text" name="content"></div>
-        <button type="button" onclick="">작성</button>
+        방명록입니다.
+        <div>
+            작성자 <input type="text" name="name" />
+        </div>
+        <div>
+            내용 <input type="text" name="content" />
+        </div>
+        <div>
+            <button type="button" onclick="addRow()">작성</button>
+        </div>
     </div>
 
     <table
-    border="1"
-    >
+        border="1">
         <thead>
             <tr>
                 <th>번호</th>
-                 <th>작성자</th>
-                 <th>내용</th>
-                 <th>작성일</th>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>작성일</th>
             </tr>
         </thead>
         <tbody>
@@ -33,15 +42,37 @@
             // input 2개 값 가져오기
             const name = document.querySelector("[name=name]").value;
             const content = document.querySelector("[name=content]").value;
-            // 번호 작성일
-                // 번호
+            
+            // 번호
                 // let num=1; -> num ++ or tbody의 children 개수 -> tbody.children.length
+            const num = (document.querySelector("tbody").children.length)+1;
+            
+            //작성일
             const date = new Date();
-            const dateString = ``;
+            const dateString = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+            
             // tr태그 1개 생성
+            const tr = document.createElement("tr");
+
             // td태그 4개 생성
+            const td1 = document.createElement("td");
+            td1.innerText = num;
+            const td2 = document.createElement("td");
+            td2.innerText = name;
+            const td3 = document.createElement("td");
+            td3.innerText = content;
+            const td4 = document.createElement("td");
+            td4.innerText = dateString;
+
             // td태그 4개 tr태그 자식요소 맨뒤에 추가
+            tr.append(td1);
+            tr.append(td2);
+            tr.append(td3);
+            tr.append(td4);
+
             // tbody 태그의 자식요소로 tr태그를 추가
+            const tbody = document.querySelector("tbody");
+            tbody.append(tr);
         }
     </script>
 </body>
