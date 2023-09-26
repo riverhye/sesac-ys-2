@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color div</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        .color-box {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border: 1px solid black;
+            transition: all .5s ease-in-out;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="color-box white" onclick="clickBox()"></div>
+
+    <script>
+        function clickBox() {
+            //횟수 -> 색상
+            //색상은 rgb라는 충격적인 사실........... 인간들이 읽고 해석할 수 있는 방식이 필요하다.
+
+            const box = $('.color-box');
+            
+            /*
+            if(box.hasClass('white') || box.css('background-color') == 'purple') {
+                box.removeClass('white');
+                //box.addClass('red');
+                box.css('background-color','red');
+            }
+            else if (box.css('background-color') =='red') {
+                console.log(box.css('background-color','orange'));
+            }
+            else if (box.css('background-color') == 'orange') {
+                box.css('background-color','rgb(255, 255, 0)');
+            }
+            else if (box.css('background-color') == 'rgb(255, 255, 0)') {
+                box.css('background-color','rgb(0, 128, 0)');
+            }
+            else if (box.css('background-color') == 'rgb(0, 128, 0)') {
+                box.css('background-color','rgb(0, 0, 225)');
+            }
+            else if (box.css('background-color') == 'rgb(0, 0, 225)') {
+                box.css('background-color','rgb(128, 0, 128)');
+            }
+            */
+
+            //아 실습명이 클래스 바꾸기였다.
+
+           
+           if(box.hasClass('white') || box.hasClass('purple')) {
+            box.removeClass('purple');
+            box.removeClass('white');
+            box.addClass('red');
+           }
+           else if(box.hasClass('red')) {
+            box.removeClass('red');
+            box.addClass('orange');
+           }
+           else if(box.hasClass('orange')) {
+            box.removeClass('orange');
+            box.addClass('yellow');
+           }
+           else if(box.hasClass('yellow')) {
+            box.removeClass('yellow');
+            box.addClass('green');
+           }
+           else if(box.hasClass('green')) {
+            box.removeClass('green');
+            box.addClass('blue');
+           }
+           else if(box.hasClass('blue')) {
+            box.removeClass('blue');
+            box.addClass('purple');
+           }
+           
+        }
+
+        
+    </script>
+</body>
+</html>
