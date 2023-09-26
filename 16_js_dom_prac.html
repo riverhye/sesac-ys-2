@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단 계산기 만들기</title>
+    <style>
+        #cal-box {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <form id="cal-box">
+        <div>
+            값1: <input type="number" id="val1" value="" name="val1" />
+        </div>
+        <div>
+            값2: <input type="number" id="val2" value="" name="val2" />
+        </div>
+        <div>
+            연산자: <input type="text" id="oper" value="" name="operation" />
+        </div>
+        <div>
+            결과: <input type="text" id="result" value="" name="result" readonly/>
+                                                                <!-- 결과값은 건들지 못하게 -->
+    
+        </div>
+        <div>
+            <button type="button" class="calculate" onclick="calculate()">계산하기</button>
+            <button type="button" class="reset" onclick="reset()">초기화</button>
+        </div>
+    </form>
+
+    <script>
+        function reset() {
+            const form = document.querySelector(".cal-box");
+            for(const i=0; i<=form.length; i++) {
+                document.querySelectorAll('input')[i].value = null; //""로 기입해도 됨.
+            }
+        }
+        // 모든 걸 한 방에 : button type = "reset"
+        function calculate() {
+            //값1 기입
+            const val1 = Number(document.querySelector('#val1').value);
+            //값2 기입
+            const val2 = Number(document.querySelector('#val2').value);
+            //연산자 기입
+            const oper = document.querySelector('#oper').value;
+            //연산자를 연산자로 어떻게 가져오지?
+            let result;
+            if (oper == '+') {
+                result = Number(val1) + Number(val2);
+                //얘는 결과값이 string처럼 나열된다. input은 값을 string으로 반환하나?
+                //넘버 + 넘버 = 플러스로 계산, 둘 중 하나라도 string이면 병기
+                //type=text여서 그런 줄 알았는데 상관 없이 Number을 기입! 기왕이면 모든 결과값에 적용하도록 변수 정의했던 데에.
+            } 
+            else if (oper == '-') {
+                result = val1 - val2;
+            } 
+            else if (oper == '*' || oper == 'x') {
+                result = val1 * val2;
+            } 
+            else if (oper == '/') {
+                result = val1 / val2;
+            }
+            document.querySelector('#result').value = result;
+                //오른쪽 피연산자를 왼쪽에 대입하므로.. result라는 결과값을 value에 넣어야 해서 이런 듯..
+        }
+
+
+        //if문 대신 swith문으로 만들기
+            // let results;
+            // switch(oper) {
+            //     case "+":
+            //         result = val1 + val2;
+            //     case "-":
+            //         result = val1 - val2;
+            //     case "*":
+            //         result = val1 * val2;
+            //     case "/":
+            //         result = val1 / val2;
+            //         break;
+            // }
+            // document.getElementById("result") = results;
+
+    </script>
+</body>
+</html>

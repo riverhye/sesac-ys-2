@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록 만들기</title>
+</head>
+<body>
+    <div>
+        <div>작성자 <input type="text" name="name" /></div>
+        <div>내용 <input type="text" name="content"></div>
+        <button type="button" onclick="">작성</button>
+    </div>
+
+    <table
+    border="1"
+    >
+        <thead>
+            <tr>
+                <th>번호</th>
+                 <th>작성자</th>
+                 <th>내용</th>
+                 <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        function addRow() {
+            // input 2개 값 가져오기
+            const name = document.querySelector("[name=name]").value;
+            const content = document.querySelector("[name=content]").value;
+            // 번호 작성일
+                // 번호
+                // let num=1; -> num ++ or tbody의 children 개수 -> tbody.children.length
+            const date = new Date();
+            const dateString = ``;
+            // tr태그 1개 생성
+            // td태그 4개 생성
+            // td태그 4개 tr태그 자식요소 맨뒤에 추가
+            // tbody 태그의 자식요소로 tr태그를 추가
+        }
+    </script>
+</body>
+</html>
