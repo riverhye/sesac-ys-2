@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS object-fit</title>
+    <style>
+        .div {
+            width: 500px;
+            border: 3px solid black;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .img {
+        width: 280px;
+        height: 250px;
+        }
+
+        #fill {
+            object-fit: fill;
+        }
+
+        #contain {
+            object-fit: contain;
+        }
+
+        #cover {
+            object-fit: cover;
+        }
+
+        #none {
+            object-fit: none;
+        }
+
+        #scale-down {
+            object-fit: scale-down;
+        }
+    </style>
+</head>
+<body>
+        <!-- 컨테이너 크기에 맞춰 이미지 넣기  -->
+        <h2>original</h2>
+        <div class="div">
+            <!-- original은 이미지 크기 변경을 안 해야 하는 게 맞나?
+                width만 줬더니 height이 원본대로 안 커진다.. -->
+            <img id="orginal" src="../htmlCssJs/img/dune.webp" alt="">
+        </div>
+        <h2>fill</h2>
+        <div class="div">
+            <img class="img" id="fill" src="../htmlCssJs/img/dune.webp" alt="">
+        </div>
+       <h2>contain</h2>
+        <div class="div">
+            <img class="img" id="contain" src="../htmlCssJs/img/dune.webp" alt="">
+        </div>
+        <h2>cover</h2>
+        <div class="div">
+            <img class="img" id="cover" src="../htmlCssJs/img/dune.webp" alt="">
+        </div>
+        <h2>none</h2>
+        <div class="div">
+            <img class="img" id="none" src="../htmlCssJs/img/dune.webp" alt="">
+        </div>
+        <h2>scale-down</h2>
+        <div class="div">
+            <img class="img" id="scale-down" src="../htmlCssJs/img/dune.webp" alt="">
+        </div>
+</body>
+</html>

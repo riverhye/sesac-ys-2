@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+#parent {
+    position: relative;
+    /* img가 absolute일 때
+    부모 요소에 width 설정 -> left/right 설정 안 됨
+            height 설정 -> top/bottom 설정 안 됨
+    why?
+    아마 시작점을 잡을 수 없어서겠다. div > div는 면과 면끼리 만나서 괜찮은데 img는 inline 요소라서 block 즉 면 단위로는 인식 못한다.
+    offset(경계선) 기준으로 움직이는데 면이 존재해 버리니까 선을 따라 움직일 수가 없는 거다.
+    */
+}
+
+/* img {
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    transform: skewY(20deg);
+} */
+
+#first-img {
+    top: 270px;
+    left: 500px;
+    z-index: 2;
+}
+
+#second-img {
+    top: 300px;
+    left: 250px;
+    z-index: 3;
+}
+
+#third-img {
+    top: 240px;
+    left: 750px;
+    z-index: 1;
+}
