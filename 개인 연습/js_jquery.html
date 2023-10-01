@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery practice</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        #container {
+            display: flex;
+        }
+        .box {
+            width: 100px;
+            height: 200px;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+
+        .beige {
+            background-color: beige;
+        }
+
+        .brown {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" type="text" name="name" value="your name" />
+    <span id="greeting">Greeting</span>
+    <hr />
+    <div id="container">
+        <div class="container box purple" ></div>
+        <div class="container box beige" ></div>
+        <div class="container box brown" ></div>
+    </div>
+
+    <button type="button" onclick="useAppend()">append</button>
+
+    <script>
+        // $('input').val('Write it down plz');
+        $('#greeting').text('sayHi');
+        $('#greeting').html('Great to <b> see </b> you!');
+
+        function useAppend() {
+            $('#container').append(`<div id="yellow" class="box" style="background-color: yellow"></div>`);
+        }
+        $("#container").empty();
+    </script>
+</body>
+</html>
