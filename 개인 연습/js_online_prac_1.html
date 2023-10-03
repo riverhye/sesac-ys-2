@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS array 메서드 실습</title>
+    <title>JS array 메서드 실습 & 전개연산자</title>
 </head>
 <body>
     <script>
@@ -23,7 +23,7 @@
         //리스트 순서 반전
         console.log(colors.reverse());
 
-        //배열 reverse 하면 이전에 배열 출력한 것도 거꾸로 병기
+        //여기서 문제! 배열 reverse 하면 이전에 배열 출력한 것도 거꾸로 병기
         /*(8) ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple', 'black']
             *0: "black"
             *1: "purple"
@@ -43,6 +43,11 @@
         //전개 연산자 사용
         //참조를 멈춰서 배열의 내부 값 순서도 맞춰진다.
         console.log([...colors].reverse());
+
+        const strObj = new String();
+        console.log(strObj); 
+        const strObj2 = new String('Kate');
+        console.log(strObj2); 
     </script>
 </body>
 </html>
