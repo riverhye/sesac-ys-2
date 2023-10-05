@@ -1,0 +1,52 @@
+.container {
+    width: 500px;
+    height: 500px;
+    background-color: beige;
+    display: flex;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+
+/* @media 미디어 유형 and(&&논리합 같은 역할) (규칙) */
+
+/* 작은 화면 기준으로 만들 때 : min-width */
+@media screen and (min-width: 700px) {
+    /* min-width = 최소 너비 = ~이상 */
+    .container {
+        background-color: blue;
+    }
+}
+
+/* 보통 min이나 max 둘 중 하나로 통일 */
+
+/* 큰 화면 기준으로 만들 때 : max-width */
+@media screen and (max-width: 700px) {
+    .yellow {
+        background-color: goldenrod;
+    }
+}
+
+/* CSS는 감이라서 계속 작성해봐야~ */
+
+@media screen and (max-width < 500px) {
+    .container {
+        flex-direction: column;
+        /* 다른 방법 display: block; */
+    }
+}
