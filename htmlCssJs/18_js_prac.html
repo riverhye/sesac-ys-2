@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+        
+        h1 {
+            text-align: center;
+            color:goldenrod;
+        }
+
+        div,button {
+            margin-top: 10px;
+        }
+
+        table {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        날짜 : <input id="date" type="number" name="date">
+    </div>
+
+    <div>
+        내용 : <input id="content" type="text" name="content">
+    </div>
+    <button type="button">작성</button>
+    <div>
+        <h1> 2022년 7월</h1>
+    </div>
+    <div>
+        <table border="0"
+            cellpadding = "10"
+            cellspacing = "10">
+        <thead>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <script>
+        let date;
+        //td 눌렀을 때의 날짜(숫자)가 input 날짜칸 값이 되도록
+        $('td').on('click', function () {
+            $('#date').val(Number($(this).text()));
+            date = this;
+        });
+
+        //작성 버튼 누르면 value가 위에 적은 날짜의 아래에
+        $('button').on('click', function() {
+            let content = $('#content').val();
+            //날짜 input에 적힌 td의 자식요소로 content의 value를 작성한다
+            //[point] td태그의 식별이 관건
+                //변수에 this를 넣어온다
+            //[point] 다음줄에 어떻게 입력하지?
+                //p태그 넣기..? html 태그 체이닝으로..? : 변수에 넣어서 백틱으로 같이
+            //식별자는 따옴표 없이
+            $(date).append(`<br />${content}`);
+            
+        })
+    </script>
+</body>
+</html>

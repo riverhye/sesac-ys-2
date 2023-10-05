@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS event prac</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+            margin-top: 10px;
+        }
+
+        .black {
+            background-color: black;
+        }
+    </style>
+
+</head>
+<body>
+    <input type="password" name="pw">
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+
+
+    <script>
+        $('input[name=pw]').on('click', function () {
+            $(this).css('background-color','blue');
+        })
+
+        $('input[type=password]').hover()
+        $("input[name=pw]").on("keyup", function(event){
+        if(event.key == "Enter") console.log("value: ", this.value); // login();
+        });
+
+        $('.container').hover(function() {
+            $(this).css('background-color','blue');
+        }, function() {
+            $(this).css('background-color', 'blueviolet');
+        })
+
+        // $(".container").click((event) => {
+        // $(event.target).css("background-color", "red");
+        // })
+
+        $('.container').click((e) => {
+            console.log(e.target);
+            // 클래스 추가보다 호버가 더 아래에 써있어서 이런 식으로 바뀌진 않는군..
+            $(e.target).addClass('black');
+        })
+
+        // !! 스크롤이 바닥을 찍었을 때
+        // 다큐먼트의 높이 & 현재 스크롤 위치를 알아야 함
+        // 전자 : $(document).height()
+        // 후자 : $(window).scrollTop()
+        if($(document).height() - $(window).height() == $(window).scrollTop()) {
+            console.log('hello');
+        }
+
+        $(document).scroll( function() {
+            if(document.body.scrollHeight < 500) {
+                $('.container').append('<span>hi</span>');
+            }
+        })
+    </script>
+</body>
+</html>
