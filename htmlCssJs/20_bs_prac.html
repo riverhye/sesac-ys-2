@@ -54,13 +54,13 @@
         }
       }
 
-      .line:nth-child(odd) {
-        transform: skew(60deg,-30deg) scaleY(.66667);
+        .line:nth-child(odd) {
+          transform: skew(60deg,-30deg) scaleY(.66667);
+        }
+        .line:nth-child(even) {
+          transform: skew(0deg,-30deg) scaleY(1.33333);
+        }
       }
-      .line:nth-child(even) {
-        transform: skew(0deg,-30deg) scaleY(1.33333);
-      }
-    }
 
         @keyframes moveWords {
           0% {
@@ -74,15 +74,21 @@
           }
         }
 
+        * {
+          transition: width, height .1s linear;
+        }
+
         header {
           margin-top: 200px;
+        }
+        .nav-icon {
+            font-size: 25px;
         }
 
         .movie-list {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .movie-title {
@@ -96,10 +102,6 @@
             height: 280px;
         }
 
-        .nav-icon {
-            font-size: 25px;
-        }
-
         .movie-box {
             margin: 30px 10px;
             padding: 7px;
@@ -111,7 +113,7 @@
             border-radius: 10px;
         }
 
-        .card-text {
+        .moive-synop {
           height: 250px;
           text-align: justify;
         }
@@ -129,175 +131,188 @@
         }
 
         .hidden {
-            display: none;
-          }
+          display: none;
+        }
 
         @media screen and (max-width: 768px) {
+          .container-fluid {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .navbar-collapse {
+            text-align: center;
+          }
+
           .movie-title {
-            font-size: 20px;
+            font-size: 14px;
+            padding: 0px;
+            height: 20px;
           }
 
           .movie-box {
-            width: 100px;
+            width: 80px;
+            height: 150px;
+          }
+
+          .movie-img {
+            height: 90px;
+          }
+
+          .card-body {
+            display: none;
+          }
+
+          .badge {
+            right: 10px;
           }
         }
 
     </style>
   </head>
   <body>
-    <div class="wrapper page-title">
-      <h1 class="text">
-        <div class="line">
-          <p>stills</p>
-          <p>stills</p>
-        </div>
-        <div class="line">
-          <p>the</p>
-          <p>the</p>
-        </div>
-        <div class="line">
-          <p>show</p>
-          <p>show</p>
-        </div>
-      </h1>
-    </div>
-
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#"><i class="nav-icon fa-solid fa-house"></i></a>
-              <a class="nav-link" href="#">Explore</a>
-              <a class="nav-link" href="#">Movie Stills</a>
-              <a class="nav-link" href="#">Articles</a>
+    <div class="whole-wrapper">
+      <header>
+        <div class="wrapper page-title">
+          <h1 class="text">
+            <div class="line">
+              <p>stills</p>
+              <p>stills</p>
             </div>
-          </div>
-          <nav class="navbar bg-body-tertiary">
+            <div class="line">
+              <p>the</p>
+              <p>the</p>
+            </div>
+            <div class="line">
+              <p>show</p>
+              <p>show</p>
+            </div>
+          </h1>
+        </div>
+          <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
             <div class="container-fluid">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="#"><i class="nav-icon fa-solid fa-house"></i></a>
+                  <a class="nav-link" href="#">Explore</a>
+                  <a class="nav-link" href="#">Movie Stills</a>
+                  <a class="nav-link" href="#">Articles</a>
+                </div>
+              </div>
+              <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
             </div>
           </nav>
-        </div>
-      </nav>
-    </header>
+        </header>
+    
+          <main>
+            <section class="movie-list">
+              <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+                <div class="movie-title-box position-relative">
+                    <h4 class="movie-title">After Sun
+                      <span class="position-absolute top-0 end-20 badge bg-danger">New</span>
+                    </h4>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGNm5go0wCSVQ4slwQ_asbbxgDJfzYqjDqdQ&usqp=CAU"
+                         class="card-img-top movie-img" alt="still">
+                </div>
+                <div class="card-body">
+                    <ul class="movie-info">
+                        <li>Drama</li>
+                        <li><i class="fa-solid fa-star"></i>5.0</li>
+                    </ul>
+                  <p class="card-text moive-synop">Twenty years after their last holiday at a fading vacation resort, Sophie reflects on the rare time spent with her loving and idealistic father Calum.</p>
+                </div>
+              </div>
+    
+              <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+                <div class="movie-title-box">
+                    <h4 class="movie-title">MadMax : Fury Road</h4>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_fa6EE2m1jQKR4gkrlNrIEZhjKKCdjodp5Q&usqp=CAU"
+                         class="card-img-top movie-img" alt="still">
+                </div>
+                <div class="card-body">
+                    <ul class="movie-info">
+                        <li>Action</li>
+                        <li><i class="fa-solid fa-star"></i>4.5</li>
+                    </ul>
+                  <p class="card-text moive-synop">In a post-apocalyptic wasteland, Max, a drifter and survivor, unwillingly joins Imperator Furiosa, a rebel warrior, in a quest to overthrow a tyrant who controls the land's water supply.</p>
+                </div>
+              </div>
+    
+              <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+                <div class="movie-title-box">
+                    <h4 class="movie-title">Chungking Express</h4>
+                    <img src="https://variety.com/wp-content/uploads/2017/10/rexfeatures_390927lg.jpg?w=1000&h=563&crop=1&resize=1000%2C563"
+                         class="card-img-top movie-img" alt="still">
+                </div>
+                <div class="card-body">
+                    <ul class="movie-info">
+                        <li>Melodrama</li>
+                        <li><i class="fa-solid fa-star"></i>3.0</li>
+                    </ul>
+                  <p class="card-text moive-synop">Cop 663 (Tony Leung Chiu Wai) is distraught with heartbreak over a breakup. But when his ex drops a spare set of his keys at a local cafe, a waitress (Faye Wong) lets herself into his apartment and spruces up his life.</p>
+                </div>
+              </div>
+            </section>
 
-      <main>
-        <section class="movie-list">
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box position-relative">
-                <h4 class="movie-title">After Sun
-                  <span class="position-absolute top-0 end-20 badge bg-danger">New</span>
-                </h4>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGNm5go0wCSVQ4slwQ_asbbxgDJfzYqjDqdQ&usqp=CAU"
-                     class="card-img-top movie-img" alt="still">
+            <section class="movie-list">
+              <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+                <div class="movie-title-box">
+                    <h4 class="movie-title">Midsommar</h4>
+                    <img src="https://www.syfy.com/sites/syfy/files/styles/hero_image__large__computer__alt_1_5x/public/2020/05/midsommar.jpg"
+                         class="card-img-top movie-img" alt="still">
+                </div>
+                <div class="card-body">
+                    <ul class="movie-info">
+                        <li>Thriller</li>
+                        <li><i class="fa-solid fa-star"></i>4.0</li>
+                    </ul>
+                  <p class="card-text moive-synop">A couple travel to Sweden to visit their friend's rural hometown for its fabled midsummer festival, but what begins as an idyllic retreat quickly devolves into an increasingly violent and bizarre competition at the hands of a pagan cult.</p>
+                </div>
             </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Drama</li>
-                    <li><i class="fa-solid fa-star"></i>5.0</li>
-                </ul>
-              <p class="card-text">Twenty years after their last holiday at a fading vacation resort, Sophie reflects on the rare time spent with her loving and idealistic father Calum.</p>
-            </div>
-          </div>
-
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box">
-                <h4 class="movie-title">MadMax : Fury Road</h4>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_fa6EE2m1jQKR4gkrlNrIEZhjKKCdjodp5Q&usqp=CAU"
-                     class="card-img-top movie-img" alt="still">
-            </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Action</li>
-                    <li><i class="fa-solid fa-star"></i>4.5</li>
-                </ul>
-              <p class="card-text">In a post-apocalyptic wasteland, Max, a drifter and survivor, unwillingly joins Imperator Furiosa, a rebel warrior, in a quest to overthrow a tyrant who controls the land's water supply.</p>
-            </div>
-          </div>
-
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box">
-                <h4 class="movie-title">Chungking Express</h4>
-                <img src="https://variety.com/wp-content/uploads/2017/10/rexfeatures_390927lg.jpg?w=1000&h=563&crop=1&resize=1000%2C563"
-                     class="card-img-top movie-img" alt="still">
-            </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Melodrama</li>
-                    <li><i class="fa-solid fa-star"></i>3.0</li>
-                </ul>
-              <p class="card-text">Cop 663 (Tony Leung Chiu Wai) is distraught with heartbreak over a breakup. But when his ex drops a spare set of his keys at a local cafe, a waitress (Faye Wong) lets herself into his apartment and spruces up his life.</p>
-            </div>
-          </div>
-
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box">
-                <h4 class="movie-title">Midsommar</h4>
-                <img src="https://www.syfy.com/sites/syfy/files/styles/hero_image__large__computer__alt_1_5x/public/2020/05/midsommar.jpg"
-                     class="card-img-top movie-img" alt="still">
-            </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Thriller</li>
-                    <li><i class="fa-solid fa-star"></i>4.0</li>
-                </ul>
-              <p class="card-text">A couple travel to Sweden to visit their friend's rural hometown for its fabled midsummer festival, but what begins as an idyllic retreat quickly devolves into an increasingly violent and bizarre competition at the hands of a pagan cult.</p>
-            </div>
-        </div>
-
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box">
-                <h4 class="movie-title">Carol</h4>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpe7tDtR8iaa6MZxFp2d9YwIYpDzyRy_hDpg&usqp=CAU"
-                     class="card-img-top movie-img" alt="still">
-            </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Romance</li>
-                    <li><i class="fa-solid fa-star"></i>4.5</li>
-                </ul>
-              <p class="card-text">Therese Belivet works at a department store in Manhattan where she encounters the beautiful Carol. Things take an unexpected turn when Therese develops strong feelings for Carol.</p>
-            </div>
-          </div>
-
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box">
-                <h4 class="movie-title">Spy</h4>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Izl9anu47StBTHCWyw_ya5nItZ19gUD0sA&usqp=CAU"
-                     class="card-img-top movie-img" alt="still">
-            </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Comedy</li>
-                    <li><i class="fa-solid fa-star"></i>4.0</li>
-                </ul>
-              <p class="card-text">Susan Cooper, a CIA analyst, works behind the desk owing to her expertise in high-tech equipment. When an agent is compromised, she volunteers to be a spy.</p>
-            </div>
-          </div>
-
-          <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-            <div class="movie-title-box">
-                <h4 class="movie-title">Thelma & Louise</h4>
-                <img src="https://www.alternateending.com/wp-content/uploads/2019/12/zfP8YjI0ODMX8v0ZHHIFxCTJBCm.jpg"
-                     class="card-img-top movie-img" alt="still">
-            </div>
-            <div class="card-body">
-                <ul class="movie-info">
-                    <li>Adventure</li>
-                    <li><i class="fa-solid fa-star"></i>5.0</li>
-                </ul>
-              <p class="card-text">Docile housewife Thelma accompanies her pal Louise, an independent waitress, on a brief fishing trip. However, when Louise kills a man who attempts to rape Thelma, the two become fugitives of the law.</p>
-            </div>
-          </div>
-      </main>
-      </section>
+    
+              <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+                <div class="movie-title-box">
+                    <h4 class="movie-title">Carol</h4>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpe7tDtR8iaa6MZxFp2d9YwIYpDzyRy_hDpg&usqp=CAU"
+                         class="card-img-top movie-img" alt="still">
+                </div>
+                <div class="card-body">
+                    <ul class="movie-info">
+                        <li>Romance</li>
+                        <li><i class="fa-solid fa-star"></i>4.5</li>
+                    </ul>
+                  <p class="card-text moive-synop">Therese Belivet works at a department store in Manhattan where she encounters the beautiful Carol. Things take an unexpected turn when Therese develops strong feelings for Carol.</p>
+                </div>
+              </div>
+    
+              <div class="card movie-box shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
+                <div class="movie-title-box">
+                    <h4 class="movie-title">Spy</h4>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Izl9anu47StBTHCWyw_ya5nItZ19gUD0sA&usqp=CAU"
+                         class="card-img-top movie-img" alt="still">
+                </div>
+                <div class="card-body">
+                    <ul class="movie-info">
+                        <li>Comedy</li>
+                        <li><i class="fa-solid fa-star"></i>4.0</li>
+                    </ul>
+                  <p class="card-text moive-synop">Susan Cooper, a CIA analyst, works behind the desk owing to her expertise in high-tech equipment. When an agent is compromised, she volunteers to be a spy.</p>
+                </div>
+              </div>
+            </section>
+          </main>
+    </div>
+  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
