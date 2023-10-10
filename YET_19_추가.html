@@ -78,9 +78,11 @@
           position: static;
           line-height: var(--nav-height-sm);
           text-align: center;
-          cursor: pointer;
+        }
+        
+      i {
+        cursor: pointer;
       }
-
       header .inner .menu {
           background-color: aliceblue;
           text-align: center;
@@ -93,7 +95,7 @@
       }
     }
     
-    .active {
+    .hidden {
         display: none;
       }
       
@@ -115,22 +117,23 @@
     </header>
 
     <script>
-      $(window).resize(function() {
-        if( $(window).width() < 768) {
+      // resize는 창 크기 조절하는 것 인식
+        $(window).resize(function() {
           $('.logo').click(function() {
-            $('.menu').toggle('slow');
+          if( $(window).width() < 768) {
+             $('.menu').toggle();
+             // 부드럽게 메뉴가 나오려면?
+             // $('.menu').css('transition', '.3s');
+           }
           })
-        }
-      })
+         })
 
-        // const logo = document.querySelector('i');
+        // const logo = document.querySelector('.logo');
         // const menu = document.querySelector('.menu');
 
-        // 클래스가 생기고 사라지긴 하는데 왜 동작을 하지 않는지 모르겠다.. style에서 가장 하단으로 바꿔도 봤는데
-        // 제이쿼리 cdn 삽입만 하면 자꾸 오류가 뜬다. 대체 무슨 오류인지 검색해도 안 나오고..
         // if(window.innerWidth < 768) {
         //   logo.addEventListener('click', () => {
-        //     menu.classList.toggle('active');
+        //     menu.classList.toggle('hidden');
         //   })
         // }
 
