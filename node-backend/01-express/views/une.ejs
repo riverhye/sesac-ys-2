@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ejs 문법 사용해보기 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 주석에 ejs 문법 넣어도 인식한다.. -->
+    <!-- ejs 태그 안 자바스크립트 코드는 한줄로 -->
+    <!-- 백에서 받아온 변수를 사용(product) -->
+    <% for(let i=0; i<product.length; i++) { %>
+    <!-- ejs 태그 안에 바로 '='이 오면 뒤에 있는 변수나 값을 html로 노출 -->
+    <div>상품 <%=product[i] %> </div>
+    <% } %>
+
+    <%="hello une" %>
+    <!-- ejs 태그 안에 바로 '-'이 오면 뒤에 있는 변수나 값을 html로 노출 + html 태그 인식 -->
+    <%="<div>hellow</div>"%>
+    <%-"<div>hellow</div>"%>
+
+    <!-- html 태그를 포함하여 같은 라인에 있는 index.ejs 파일 가져오기 -->
+    <%-include("index.ejs")%>
+
+    <!-- 백에서 받아온 변수를 사용(name) -->
+    <%=name %>
+
+
+
+    <!-- 서버 객체가 달라지지 않으면 새로고침만 해도 수정 내용 update -->
+    <script>
+        // console.log(product) // ERROR
+        // Why? 백에서 넘겨준 변수 product는 ejs 문법 하에 작성된 것이라 내부에서만 사용 가능
+    </script>
+</body>
+</html>
