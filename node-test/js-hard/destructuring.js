@@ -35,7 +35,6 @@ console.log(number, reName, test); // 9 une test
 // const gender = obj.gender;
 
 
-
 // Spread 연산자
 const arr1 = [1, 2, 3, 4, 5];
 const arr2 = ['a', 'b', 'c', 'd', 'e'];
@@ -46,8 +45,35 @@ console.log(arr3);
 const hello = [...'hello'];
 console.log(hello); // [ 'h', 'e', 'l', 'l', 'o' ]
 
+
+// 실습: spread로 문자열 합치기
 const word1 = 'abc';
 const word2 = 'xyz';
 
 const words = [...word1, ...word2];
 console.log(words);
+
+
+// 객체 spread
+const obj2 = {
+    name: 'une',
+    gender: 'WM',
+    number: 9
+};
+
+const obj3 = {
+    ...obj2,
+    test: 'test',
+};
+console.log(obj3);
+
+
+// rest 파라미터
+const value = [10, 20, 30];
+                // rest 파라미터: 호출 받는 함수의 파라미터로
+function get(a, ...rest) {
+    console.log(a), // 10
+    console.log(rest); // 할당하고 남은 인자들이 배열로 [20, 30]
+}
+// spread 파라미터: 함수를 호출할 때의 파라미터
+get(...value);
