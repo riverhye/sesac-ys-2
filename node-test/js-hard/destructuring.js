@@ -76,4 +76,4 @@ function get(a, ...rest) {
     console.log(rest); // 할당하고 남은 인자들이 배열로 [20, 30]
 }
 // spread 파라미터: 함수를 호출할 때의 파라미터
-get(...value);
+get(...value); // get([10, 20, 30])과 동일
