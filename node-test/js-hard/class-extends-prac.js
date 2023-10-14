@@ -1,3 +1,14 @@
+function test() {
+    console.log('test');
+}
+
+console.log(test()); // undefined
+// WHY? test 함수는 return값이 없어서 호출한 함수의 내용을 콘솔에 찍지만
+// 함수 자체를 콘솔에 찍어봤자 return할 것이 없어 undefined
+
+
+// 실습
+// 0. 직사각형 넓이
 class Shape {
     constructor(width, height) {
         this.width = width;
