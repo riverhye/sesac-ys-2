@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form dynamic</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form name="login">
+        ID <input type="text" name="id" />
+        PW <input type="password" name="pw" />
+        <div style="margin: 10px 0">
+            <button type="button" onclick="axiosPost()">로그인</button>
+        </div>
+    </form>
+    <div id="greeting"></div>
+
+    <script>
+        function axiosPost(){
+            const form = document.forms["login"]
+            const data = {
+                id: form.id.value,
+                pw: form.pw.value
+            }
+            axios({
+                method: 'post',
+                url: '/post',
+                data: data
+            }).then((res)=>{
+                if(res.data===true) {
+                    document.getElementById('greeting').innerHTML = "<span style='color: blue'>login 성공</span>"
+                } else {
+                    document.getElementById('greeting').innerHTML = "<span style='color: red'>login 실패</span>"
+                }
+                })
+        }
+    </script>
+</body>
+</html>
