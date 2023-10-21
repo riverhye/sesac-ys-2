@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file upload prac</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h2>그냥 회원가입</h2>
+    <form action="/signup" method="post" enctype="multipart/form-data">
+        <input type="text" name="userid" placeholder="ID" />
+        <input type="password" name="userpw" placeholder="PASSWORD" />
+        <input type="text" name="username" placeholder="NAME" />
+        <input type="number" name="userage" placeholder="AGE" />
+        <input type="file" name="userpic" />
+        <button type="submit">회원가입</button>
+    </form>
+
+    <h2>동적 회원가입</h2>
+    <form name="dynamic-signup">
+        <input type="text" name="userid" placeholder="ID" />
+        <input type="password" name="userpw" placeholder="PASSWORD" />
+        <input type="text" name="username" placeholder="NAME" />
+        <input type="number" name="userage" placeholder="AGE" />
+        <input type="file" name="userpic" />
+        <button type="button" onclick="dynamicSignUp()">동적 회원가입</button>
+        <div id="signup-msg"></div>
+    </form>
+
+    <script>
+        function dynamicSignUp() {
+            const form = document.forms["dynamic-signup"];
+            // 생성자 함수는 대문자로 시작
+            const formData = new FormData();
+            // -----------------------------id만 빼고 데이터 만들어서 undefined였음..
+            formData.append("userid", form.userid.value);
+            formData.append("userpic", form.userpic.files[0]);
+            formData.append("username", form.username.value);
+            formData.append("userpw", form.userpw.value);
+            formData.append("userage", form.userage.value);
+
+            axios({
+                method: "post",
+                url: "/signup/dynamic",
+                data: formData,
+                headers: {"content-type": "multipart/form-data"}
+            }).then((res)=>{
+                const result = document.getElementById("signup-msg")
+                result.innerHTML = `<img src="/${res.data.src}" width="200" /></p> <h4>${res.data.name}님 환영합니다!</h4> <p>비밀번호: ${res.data.pw}</p> <p>이름 : ${res.data.name}</p> <p> 나이: ${res.data.age}</p>`
+            })
+        }
+    </script>
+</body>
+</html>
