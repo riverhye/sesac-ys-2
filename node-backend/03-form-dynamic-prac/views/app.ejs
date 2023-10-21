@@ -28,12 +28,12 @@
                 url: '/post',
                 data: data
             }).then((res)=>{
-                if(res.data===true) {
-                    document.getElementById('greeting').innerHTML = "<span style='color: blue'>login 성공</span>"
-                } else {
-                    document.getElementById('greeting').innerHTML = "<span style='color: red'>login 실패</span>"
-                }
-                })
+                const {isSuccess, msg} = res.data
+                const el = document.getElementById('greeting') // 공통 부분
+                el.innerHTML = msg
+                const color = isSuccess ? 'blue' : 'red' // 조건 달린 공통 부분
+                el.style.color = color
+            })
         }
     </script>
 </body>

@@ -19,12 +19,15 @@ app.post('/post', function (req, res){
     const id = 'aaa'
     const pw = '1234'
     if(id === req.body.id && pw === req.body.pw) {
-        res.send(true)
+        data = {isSuccess: true, msg: 'login!'}
+        // res.send(true)
     } else {
-        res.send(false)
+        data = {isSuccess: false, msg: 'login fail!'}
+        // res.send(false)
     }
     // id === req.body.id && pw === req.body.pw ? res.send(true) : res.send(false)
-    res.send(req.body)
+    res.send(data)
+    // res.send(req.query) // 결과를 데이터로 만들어 보내기!
 })
 
 app.listen(PORT, function(){
