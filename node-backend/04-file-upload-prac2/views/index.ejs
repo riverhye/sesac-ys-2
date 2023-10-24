@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드 연습</title>
+</head>
+<body>
+    <h2>일반 폼 전송 - 1개 </h2>
+    <form action="/single" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="text" name="title" />
+        <button type="submit">파일 전송</button>
+    </form>
+    <h2>일반 폼 전송 - 여러 개: 하나의 input </h2>
+    <form action="/several" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" multiple />
+        <input type="text" name="title" />
+        <button type="submit">파일 전송</button>
+    </form>
+    <h2>일반 폼 전송 - 여러 개 : 다수 input </h2>
+    <form action="/severals" method="post" enctype="multipart/form-data">
+        <input type="file1" name="file1" />
+        <input type="text1" name="title1" />
+        <input type="file2" name="file2" />
+        <input type="text2" name="title2" />
+        <button type="submit">파일 전송</button>
+    </form>
+</body>
+</html>

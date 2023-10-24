@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 전송 완료</title>
+    <style>
+        img {
+            width: 40%;
+            height: 40%;
+        }
+    </style>
+</head>
+<body>
+        <ul>
+            <% if (images && images.length > 0) { %>
+                <% images.forEach(file => { %>
+                    <li>
+                        <img src="<%= file.path %>" alt="img" />
+                        <%= title %>을 입력하셨네요.
+                    </li>
+                <% }); %>
+            <% } %>
+        </ul>
+</body>
+</html>
