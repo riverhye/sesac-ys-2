@@ -47,12 +47,28 @@ app.post('/single', upload.single('file'), (req, res)=>{
 })
 
 app.post('/several', upload.array('file'), (req, res)=>{
-    console.log(req.body.title);
+    console.log(req.files);
     //res.send('완료');
     res.render('result', {
         images: req.files,
         title: req.body.title
     });
+})
+
+app.post('/severals', upload.fields([{name: 'file1'}, {name: 'file2'}]), (req, res)=>{
+    console.log(req.body)
+    console.log(req.files)
+    res.send('done!')
+    // res.render('result', {
+    //     images: req.files,
+    //     title: req.body
+    // })
+})
+
+app.post("/dynamic", upload.array("file"), (req,res)=>{
+    res.send({
+        src: req.files
+    })
 })
 
 
