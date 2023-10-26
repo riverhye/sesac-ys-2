@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>파일 업로드 연습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h2>일반 폼 전송 - 1개 </h2>
@@ -20,11 +21,51 @@
     </form>
     <h2>일반 폼 전송 - 여러 개 : 다수 input </h2>
     <form action="/severals" method="post" enctype="multipart/form-data">
-        <input type="file1" name="file1" />
+        <input type="file" name="file1" />
         <input type="text1" name="title1" />
-        <input type="file2" name="file2" />
+        <input type="file" name="file2" />
         <input type="text2" name="title2" />
         <button type="submit">파일 전송</button>
     </form>
+    <hr />
+    <h2>동적 폼 전송 여러 파일 한 화면에 띄우기 (미해결)</h2>
+    <form name="dynamic">
+        <input type="file" name="file" />
+        <input type="text" name="title" />
+        <div id="result"></div>
+        <button type="button" onclick="dynamicBtn()">파일 전송</button>
+    </form>
+
+    <script>
+        function dynamicBtn() {
+            const form = document.forms["dynamic"];
+            // -----문제 1) 데이터로 넣을 때 배열 하나씩 순회
+            const files = form.file.files
+            const newFile = [];
+            files.map((file, i) => {
+                newFile.push(file[i]);
+            });
+            console.log(newFile);
+            const data = new FormData();
+            data.append("title", form.title.value);
+            data.append("file", newFile);
+            axios({
+                method:'post',
+                url: '/dynamic',
+                data: data,
+                headers: {'Content-Type': 'multipart/form-data'}
+            }).then((res)=>{
+                console.log(res.data);
+                const result = document.getElementById("result")
+                const res = res.data;
+                // ------문제 2) 결과물도 array로 받으니까(input 하나에 파일 여러 개) 순회
+                res.forEach(res => {
+                    result.innerHTML = `<img src="/${res.data.src}" width="150px"/>`
+                })
+            }).catch((error)=>{
+            console.log('err');
+            })
+        }
+    </script>
 </body>
 </html>
