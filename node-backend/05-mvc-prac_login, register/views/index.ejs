@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <form name="register">
+    <!-- <form name="register">
       <label for="username">이름</label>
       <input type="text" name="username" id="username" required />
       <br />
@@ -58,7 +58,7 @@
 
       <button type="button" onclick="clickRegister();">회원가입</button>
     </form>
-    <div class="register-result"></div>
+    <div class="register-result"></div> -->
 
 
     <h2>실습 2. 로그인</h2>
@@ -77,46 +77,37 @@
     <div class="login-result"></div>
 
     <script>
-      function clickRegister() {
-        // document.forms = {
-        //     register: <form></form>,
-        //     login: <form></form>,
-        // }
-        const form = document.forms["register"]
-        // console.log("gender", form.gender)
-        // console.log("interest", form.interest.value)
-        const interest = []
+      // function clickRegister() {
+      //   const form = document.forms["register"]
+      //   const interest = []
+      //   for (let input of form.interest) {
+      //     if (input.checked) interest.push(input.value)
+      //   }
+    
+      //   const data = {
+      //     username: form.username.value,
+      //     gender: form.gender.value,
+      //     year: form.year.value,
+      //     month: form.month.value,
+      //     day: form.day.value,
+      //     interest: interest
+      //   }
 
-        for (let input of form.interest) {
-          // input의 type이 radio이거나, checkbox인 경우 input의 속성으로 checked라는 게 존재
-          if (input.checked) interest.push(input.value)
-        }
+      //   axios({
+      //     method: "GET",
+      //     url: "/register",
+      //     params: data
+      //   }).then((res) => {
+      //     console.log(res.data)
+      //     const {
+      //       username
+      //     } = res.data
+      //     document.querySelector(".register-result").innerHTML = `${username}님 환영합니다.`
+      //   }).catch((err) => {
+      //     console.log(err)
+      //   })
+      // }
 
-        console.log(interest)
-
-        const data = {
-          username: form.username.value,
-          gender: form.gender.value,
-          year: form.year.value,
-          month: form.month.value,
-          day: form.day.value,
-          interest: interest
-        }
-
-        axios({
-          method: "GET",
-          url: "/register",
-          params: data
-        }).then((res) => {
-          console.log(res.data)
-          const {
-            username
-          } = res.data
-          document.querySelector(".register-result").innerHTML = `${username}님 환영합니다.`
-        }).catch((err) => {
-          console.log(err)
-        })
-      }
 
       function clickLogin() {
         const form = document.forms["login"];
@@ -125,19 +116,17 @@
           password: form.password.value
         }
 
-        // console.log(data); // 1차적으로 데이터 잘 만들어졌는지 확인
-
         axios({
           method: "POST",
           url: "/user/login",
           data: data
         }).then((res) => {
-          // { isSuccess: ??, msg : ?? }
           const {
             isSuccess,
             msg
           } = res.data
-          console.log(isSuccess) // 2. 응답 잘 오는지 확인
+          console.log(isSuccess)
+
           const element = document.querySelector(".login-result");
           element.innerHTML = msg;
 

@@ -1,13 +1,15 @@
-const getUser = require('../model/user');
+const User = require('../model/User');
 
 exports.main = (req, res) => {
     res.render('index')
 }
 
 exports.login = (req, res) => {
-    const userInfo = getUser();
+    const userInfo = User.getUser();
     let data;
-    if (req.body.userid == userInfo[0].id && req.body.password == userInfo[0].pw) {
+    // -------------- userInfo에 인덱싱을 추가하는 바람에 에러!
+    // userInfo = {id: une, pw: 1234}
+    if (req.body.userid == userInfo.id && req.body.password == userInfo.pw) {
       data = {
         isSuccess: true,
         msg: "로그인 성공",
