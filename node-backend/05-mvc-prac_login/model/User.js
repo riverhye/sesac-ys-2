@@ -6,20 +6,44 @@
 let users =
 `spreatics//12341234//코딩온
 codee//4321//코디
-lily//1234//릴리`;
+une//1234//유네`;
 
 const userSplit = users.split("\n")
 // [ 'spreatics//12341234//코딩온', 'codee//4321//코디', 'lily//1234//릴리' ]
 
+// 데이터 가공(배열 순회) 방법 : map, forEach, for of문
+// [방법 1] map
+// const userInfos = [];
+// userSplit.map((user, i)=>{
+// 	let parts = user.split("//")
+//     userInfos.push({
+//     id: parts[0],
+//     pw: parts[1],
+//     name: parts[2]
+//     })
+//   })
+
+// [방법 2] forEach
 const userInfos = [];
-for (const user of userSplit) {
-    let parts = user.split("//")
+userSplit.forEach((user)=>{
+	let parts = user.split("//")
     userInfos.push({
-        id: parts[0],
-        pw: parts[1],
-        name: parts[2]
+    id: parts[0],
+    pw: parts[1],
+    name: parts[2]
     })
-}
+  })
+
+// [방법 3] for of문
+// const userInfos = [];
+// for (const user of userSplit) {
+//     let parts = user.split("//")
+//     userInfos.push({
+//         id: parts[0],
+//         pw: parts[1],
+//         name: parts[2]
+//     })
+// }
 
 module.exports = userInfos;
 

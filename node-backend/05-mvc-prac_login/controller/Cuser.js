@@ -6,7 +6,6 @@ exports.main = (req, res) => {
 
 exports.login2 = (req, res) => {
   let data;
-  let flag;
   for (let i=0; i<userInfos.length; i++) {
     if (req.body.userid == userInfos[i].id && req.body.password == userInfos[i].pw) {
       data = {
