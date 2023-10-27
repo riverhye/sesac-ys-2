@@ -1,15 +1,27 @@
- exports.getUser = ()=>{
-    const id = "une"
-    const pw = "1234"
-    return {id, pw}
-}
-// let users =
-// `spreatics//12341234//코딩온
-// codee//4321//코디
-// lily//1234//릴리`;
+//  exports.getUser = ()=>{
+//     const id = "une"
+//     const pw = "1234"
+//     return {id, pw}
+// }
+let users =
+`spreatics//12341234//코딩온
+codee//4321//코디
+lily//1234//릴리`;
 
-// const user = users.split("\n")
+const userSplit = users.split("\n")
 // [ 'spreatics//12341234//코딩온', 'codee//4321//코디', 'lily//1234//릴리' ]
+
+const userInfos = [];
+for (const user of userSplit) {
+    let parts = user.split("//")
+    userInfos.push({
+        id: parts[0],
+        pw: parts[1],
+        name: parts[2]
+    })
+}
+
+module.exports = userInfos;
 
 // exports.module = user;
 

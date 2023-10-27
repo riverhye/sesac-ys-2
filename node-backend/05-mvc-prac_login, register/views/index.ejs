@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <!-- <form name="register">
+    <form name="register">
       <label for="username">이름</label>
       <input type="text" name="username" id="username" required />
       <br />
@@ -58,7 +58,7 @@
 
       <button type="button" onclick="clickRegister();">회원가입</button>
     </form>
-    <div class="register-result"></div> -->
+    <div class="register-result"></div>
 
 
     <h2>실습 2. 로그인</h2>
@@ -77,36 +77,34 @@
     <div class="login-result"></div>
 
     <script>
-      // function clickRegister() {
-      //   const form = document.forms["register"]
-      //   const interest = []
-      //   for (let input of form.interest) {
-      //     if (input.checked) interest.push(input.value)
-      //   }
+      function clickRegister() {
+        const form = document.forms["register"]
+        const interest = []
+        for (let input of form.interest) {
+          if (input.checked) interest.push(input.value)
+        }
     
-      //   const data = {
-      //     username: form.username.value,
-      //     gender: form.gender.value,
-      //     year: form.year.value,
-      //     month: form.month.value,
-      //     day: form.day.value,
-      //     interest: interest
-      //   }
+        const data = {
+          username: form.username.value,
+          gender: form.gender.value,
+          year: form.year.value,
+          month: form.month.value,
+          day: form.day.value,
+          interest: interest
+        }
 
-      //   axios({
-      //     method: "GET",
-      //     url: "/register",
-      //     params: data
-      //   }).then((res) => {
-      //     console.log(res.data)
-      //     const {
-      //       username
-      //     } = res.data
-      //     document.querySelector(".register-result").innerHTML = `${username}님 환영합니다.`
-      //   }).catch((err) => {
-      //     console.log(err)
-      //   })
-      // }
+        axios({
+          method: "POST",
+          // ---------- url 변경 입력
+          url: "/user/register",
+          data: data
+        }).then((res) => {
+          const {username} = res.data
+          document.querySelector(".register-result").innerHTML = `${username}님 환영합니다.`
+        }).catch((err) => {
+          console.log(err)
+        })
+      }
 
 
       function clickLogin() {

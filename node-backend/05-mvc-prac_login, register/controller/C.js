@@ -4,6 +4,10 @@ exports.main = function (req, res) {
     res.render('index');
   };
 
+exports.register = function (req, res) {
+  res.send(req.body);
+}
+
 exports.login = function (req, res) {
   //---------
   const userData = User.getUser();
