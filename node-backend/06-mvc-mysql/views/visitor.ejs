@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form name="form-visitor">
+        <fieldset>
+            <legend>방명록 등록</legend>
+            <input type="text" name="username" placeholder="사용자 이름"/>
+            <br />
+            <input type="text" name="comment" placeholder="방명록"/>
+            <br />
+            <button type="button" onclick="addComment()">등록</button>
+        </fieldset>
+    </form>
+    <br />
+    <table border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>작성자</td>
+                <td>방명록</td>
+                <td>수정</td>
+                <td>삭제</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0; i<data.length; i++) {%>
+                <tr>
+                    <!-- JS 쓸 때 ejs 문법으로 입력 -->
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].username %></td>
+                    <td><%= data[i].comment %></td>
+                    <td><button type="button" onclick="updateVisitor('<%= data[i].id %>', this.parentElement.parentElement)">수정</td></button>
+                    <!-- 아니면 아래처럼 부모 태그(td)의 부모 태그(tr)를 타고서 id를 선택해 가져올 수도 -->
+                    <!-- <td><button type="button" onclick="delVisitor(this.parentElement.parentElement)">삭제</td></button> -->
+                    <td><button type="button" onclick="delVisitor('<%= data[i].id %>', this.parentElement.parentElement)">삭제</td></button>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+    <script>
+        function addComment() {
+            // 서버에 보낼 데이터 만들기
+            const form = document.forms["form-visitor"];
+            const data = {
+                username: form.username.value,
+                comment: form.comment.value
+            }
+
+            // axios 이용해 데이터를 서버에 전송
+            axios({
+                method: "post",
+                url: "/visitor", // 새로운 라우터 설정
+                data: data
+            }).then((res)=>{
+                // tbody의 append로 추가
+                const {id, username, comment} = res.data // 요 데이터는 라우터 -> 해당 컨트롤러에서
+                $("tbody").append(
+                    `<tr>
+                        <td>${id}</td>
+                        <td>${username}</td>
+                        <td>${comment}</td>
+                        <td><button type="button" onclick="updateVisitor(${id}, this.parentElement.parentElement)">수정</td></button>
+                        <td><button type="button" onclick="delVisitor(${id}, this.parentElement.parentElement)">삭제</td></button>
+                    </tr>`
+                )
+            })
+        }
+
+
+        function delVisitor(id, trElement) {
+            // 삭제할 id 필요
+            axios({
+                method: 'delete',
+                url: `/visitor/${id}`, // 직접 요청할 땐 parmas의 콜론 없이 -> td에서 가져옴
+            }).then((res)=>{
+                console.log(res.data);
+            })
+
+            // 삭제할 td 태그 필요 -> trElement도 받고 onclick에서 인자를 보내야 함
+            $(trElement).remove()
+        }
+    </script>
+</body>
+</html>
