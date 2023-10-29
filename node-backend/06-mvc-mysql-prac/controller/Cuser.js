@@ -6,7 +6,6 @@ exports.home = (req, res)=>{
 
 exports.newRegister = (req, res) => {
     getUser.registerUser(req.body, (id)=>{
-        console.log("req.body만", req.body);
         res.send({
             ...req.body,
             id
