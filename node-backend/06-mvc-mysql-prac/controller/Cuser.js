@@ -6,7 +6,10 @@ exports.home = (req, res)=>{
 
 exports.newRegister = (req, res) => {
     getUser.registerUser(req.body, (id)=>{
+<<<<<<< HEAD
         // console.log("req.body만", req.body); // { userid: 'une', pw: '1234', name: '유네' }
+=======
+>>>>>>> f8589fa62f53b42ed5f6bb70f800f4a34a87e68c
         res.send({
             ...req.body,
             id
