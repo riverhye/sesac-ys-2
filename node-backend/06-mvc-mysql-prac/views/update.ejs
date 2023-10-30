@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form name="user-form">
+        <div class="user-infos">
+            <input class="user-infos_info" type="text" name="userid" placeholder="아이디"/>
+            <br />
+            <input class="user-infos_info" type="password" name="pw" placeholder="비밀번호"/>
+            <br />
+            <input class="user-infos_info" type="text" name="name" placeholder="이름"/>
+        </div>
+        <div>
+            <button class="btn" type="button" onclick="updateInfo()">회원정보 수정</button>
+            <button class="btn" type="button" onclick="deleteInfo()">회원정보 삭제</button>
+        </div>
+        <div id="result"></div>
+    </form>
+
+    <script>
+        function updateInfo() {
+            const form = document.forms["user-form"];
+            const data = {
+                userid: form.userid.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+
+            axios({
+                method: "patch",
+                url: `/update/${form.id.value}`,
+                data: data
+            }).then((res) => {
+                const data = res.data;
+                const result = document.getElementById("result");
+                result.innerHTML = '수정되었습니다.';
+            })
+        }
+
+        function deleteInfo() {
+            const form = document.forms["user-form"];
+            const data = {
+                userid: form.userid.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+
+            axios({
+                method: 'delete',
+                url: `/`
+            })
+        }
+    </script>
+</body>
+</html>

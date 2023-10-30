@@ -1,13 +1,14 @@
+// mysql 연동하기
 const mysql = require("mysql");
 
 const conn = mysql.createConnection({
-    host: "localhost",
-    user: "user",
-    password: "name123$",
+    host: "localhost", // :1:3306 에러 시 127.0.0.1로
+    user: "user", // root 아닌 사용자
+    password: "name123$", // 오류날 시 비번 재설정
     database: "sesac_test"
 })
 
-                    // (data, cb)를 controller에서 (req.body, f(id) 콜백함수)로 사용
+// 회원가입
 exports.registerUser = (data, cb) => {
     const sql = `insert into new_user (userid, pw, name) values('${data.userid}', '${data.pw}', '${data.name}')`;
     conn.query(sql, (err, addData) => {
@@ -19,17 +20,7 @@ exports.registerUser = (data, cb) => {
     })
 }
 
-exports.registerUser = (data, cb) => {
-    const sql = `insert into new_user (userid, pw, name) values('${data.userid}', '${data.pw}', '${data.name}')`;
-    conn.query(sql, (err, addData) => {
-        if(err) {
-            throw err;
-        }
-        console.log("addData", addData);
-        cb(addData.insertId);
-    })
-}
-
+// 로그인
 exports.users = (data, cb) => {
     const sql = `select * from new_user where userid='${data.userid}' and name='${data.name}' and pw='${data.pw}'`;
     conn.query(sql, (err, result)=>{
@@ -41,6 +32,18 @@ exports.users = (data, cb) => {
         cb(result);
     });
 };
+
+// 회원정보 수정
+exports.changeUser = (data, cb) => {
+    const sql = `update new_user set userid='${data.userid}', name='${data.name}', pw='${data.pw}' where id=${data.id}`;
+    conn.query(sql, (err, result) => {
+        if(err) {
+            throw err;
+        }
+
+        cb(result);
+    })
+}
 
 
 

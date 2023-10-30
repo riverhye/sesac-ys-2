@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stills The Show</title>
+    <title>login</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <form name="user-form">
@@ -16,18 +17,15 @@
             <input class="user-infos_info" type="text" name="name" placeholder="이름"/>
         </div>
         <div>
-            <button type="button" onclick="userRegister()">회원가입</button>
-        </div>
-        <div>
-            <a href="/login">로그인하러 가기</a>
+            <button class="btn" type="button" onclick="userLogin()">로그인</button>
         </div>
         <div id="result"></div>
     </form>
 
     <script>
-        function userRegister() {
-            const form = document.forms["user-form"]
-                const data = {
+        function userLogin() {
+            const form = document.forms["user-form"];
+            const data = {
                 userid: form.userid.value,
                 pw: form.pw.value,
                 name: form.name.value
@@ -35,18 +33,16 @@
 
             axios({
                 method: "POST",
-                url: "/register",
+                url: "/login",
                 data: data
-            }).then((res)=>{
-                const {name} = res.data
-                const result = document.getElementById("result")
-                result.innerHTML = `${name}님 가입을 환영합니다.`
-                result.style.color = 'blue'
-                // data.userid
-                // data.pw
-            })
-        }
+            }).then((res) => {
+                const data = res.data;
+                const result = document.getElementById("result");
+                result.innerHTML = data.msg;
 
+                data.flag ? result.style.color = 'blue' : result.style.color = 'red';
+            })
+        }        
     </script>
 </body>
 </html>
