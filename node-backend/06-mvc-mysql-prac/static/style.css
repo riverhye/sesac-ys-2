@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+    height: 100vh;
+}
+
+form {
+    line-height: center;
+}
+
+.user-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-infos_info {
+    height: 30px;
+    margin-top: 10px;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    border: 0px;
+    border-radius: 30px;
+    background-color: antiquewhite;
+    margin-top: 20px;
+}

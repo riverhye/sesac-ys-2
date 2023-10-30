@@ -1,12 +1,12 @@
 const getUser = require("../model/User");
 
 exports.home = (req, res)=>{
-    res.render("index");
+    res.render("home");
 }
 
 exports.newRegister = (req, res) => {
     getUser.registerUser(req.body, (id)=>{
-        console.log("req.body만", req.body);
+        // console.log("req.body만", req.body); // { userid: 'une', pw: '1234', name: '유네' }
         res.send({
             ...req.body,
             id
@@ -16,16 +16,21 @@ exports.newRegister = (req, res) => {
 
 exports.findUser = (req, res) => {
     // model의 result가 이곳의 cb으로
-    getUser.users(req.body, (result)=>{
-        // 동일하다는 조건을 여기서 확인
-        for(let i=0; i<result.length; i++) {
-            if(req.body.id == result[i].id && req.body.pw == result[i].pw) {
-                data = {msg: `${result[i].name}님 안녕하세요~!`}
-            } else {
-                data = {msg: `아이디나 비밀번호를 확인하세요.`}
+    getUser.users(req.body, userData => {
+        // console.log("cb result", userData);
+        let result;
+        if (userData.length == 0) {
+            result = {
+                flag: false,
+                msg: '아이디나 비밀번호를 확인하세요.'
             }
         }
-        console.log(result);
-        res.send(data);
+        else {
+            result = {
+                flag: true,
+                msg: `${req.body.name}님 로그인 되었습니다!`
+            }
+        } 
+        res.send(result);
     })
 }

@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVC mysql prac</title>
+    <title>Stills The Show</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <h2>폼</h2>
     <form name="user-form">
-        <input type="text" name="userid" placeholder="아이디"/>
-        <br />
-        <input type="password" name="pw" placeholder="비밀번호"/>
-        <br />
-        <input type="text" name="name" placeholder="이름"/>
-        <br />
-        <button type="button" onclick="userRegister()">회원가입</button>
-        <button type="button" onclick="userLogin()">로그인</button>
+        <div class="user-infos">
+            <input class="user-infos_info" type="text" name="userid" placeholder="아이디"/>
+            <br />
+            <input class="user-infos_info" type="password" name="pw" placeholder="비밀번호"/>
+            <br />
+            <input class="user-infos_info" type="text" name="name" placeholder="이름"/>
+        </div>
+        <div>
+            <button type="button" onclick="userRegister()">회원가입</button>
+            <button class="btn" type="button" onclick="userLogin()">로그인</button>
+        </div>
         <div id="result"></div>
     </form>
-    <hr />
+
     <script>
-        // axios 요청으로 회원가입
         function userRegister() {
             const form = document.forms["user-form"]
                 const data = {
@@ -43,7 +44,8 @@
                 // data.pw
             })
         }
-
+        
+        
         function userLogin() {
             const form = document.forms["user-form"];
             const data = {
@@ -53,12 +55,15 @@
             }
 
             axios({
-                method: "POST", // 데이터 조회니까 get?
-                url: "/users",
+                method: "POST",
+                url: "/login",
                 data: data
             }).then((res) => {
-                const result = document.getElementById("result")
-                result.innerHTML = res.data.msg
+                const data = res.data;
+                const result = document.getElementById("result");
+                result.innerHTML = data.msg;
+
+                data.flag ? result.style.color = 'blue' : result.style.color = 'red';
             })
         }
 

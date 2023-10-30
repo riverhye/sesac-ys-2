@@ -19,6 +19,31 @@ exports.registerUser = (data, cb) => {
     })
 }
 
+exports.registerUser = (data, cb) => {
+    const sql = `insert into new_user (userid, pw, name) values('${data.userid}', '${data.pw}', '${data.name}')`;
+    conn.query(sql, (err, addData) => {
+        if(err) {
+            throw err;
+        }
+        console.log("addData", addData);
+        cb(addData.insertId);
+    })
+}
+
+exports.users = (data, cb) => {
+    const sql = `select * from new_user where userid='${data.userid}' and name='${data.name}' and pw='${data.pw}'`;
+    conn.query(sql, (err, result)=>{
+        if(err) {
+            throw err;
+        };
+        console.log("user", result);
+        // sql문 결과가 result가 담김!
+        cb(result);
+    });
+};
+
+
+
 // 컨트롤러와 연결해서 이해하기
 // 1. data는 req.body
 // req.body.userid, req.body.pw, req.body.name의 값을 각 필드에 넣은 것!
@@ -46,14 +71,3 @@ exports.registerUser = (data, cb) => {
 
 // 3. 즉 data 할당과 콜백함수 부분만 컨트롤러 모듈(newRegister)로 처리하고,
 // conn.query 대목의 매개변수는 query 메서드로서 사용.
-
-exports.users = (cb) => {
-    const sql = `select * from new_user`;
-    conn.query(sql, (err, result)=>{
-        if(err) {
-            throw err;
-        };
-        // sql로 가져온 게 result에 담김
-        cb(result);
-    });
-};
