@@ -12,10 +12,10 @@
         <div>
             <input type="text" name="userid" placeholder="ID" />
             <input type="password" name="pw" placeholder="PASSWORD" />
+            <input type="text" name="name" placeholder="NAME" />
             <button type="button" onclick="signUp()">Sign Up</button>
         </div>
-        <div id="result">
-        </div>
+        <div id="result"></div>
         <div>
             <p>Already Sign Up?</p>
             <a href="/login">Sign In Here</a>
@@ -24,23 +24,24 @@
 
     <script>
         function signUp() {
-            const form = document.forms["user-form"];
-            const data = {
+            const form = document.forms["user-form"]
+                const data = {
                 userid: form.userid.value,
                 pw: form.pw.value,
                 name: form.name.value
             }
+
             axios({
-                method: "post",
+                method: "POST",
                 url: "/register",
                 data: data
             }).then((res) => {
+                const {name} = res.data
                 const result = document.getElementById("result")
-                const username = res.data.name
-                result.innerHTML = `${username}님 가입을 환영합니다!`
+                result.innerHTML = `<p>${name}님 가입을 환영합니다!</p>`
+                result.style.color = 'blue'
             })
         }
-
     </script>
 </body>
 </html>
