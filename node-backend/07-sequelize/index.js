@@ -4,15 +4,15 @@ const PORT = 8000;
 
 app.set("view engine", "ejs");
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 const router = require("./routes");
 app.use("/", router);
 
-app.get("*", (req, res)=>{
-    res.render("404");
+app.get("*", function (req, res) {
+  res.render("404");
 });
 
-app.listen(PORT, (req, res)=>{
-    console.log(`${PORT} Server Open`);
+app.listen(PORT, function () {
+  console.log(`Sever Open: ${PORT}`);
 });

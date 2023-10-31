@@ -1,7 +1,7 @@
 const getUser = require("../model/User");
 
 // 첫화면
-exports.home = (req, res)=>{
+exports.index = (req, res)=>{
     res.render("home");
 }
 
