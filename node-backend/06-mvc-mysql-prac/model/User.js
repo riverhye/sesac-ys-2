@@ -11,12 +11,11 @@ const conn = mysql.createConnection({
 // 회원가입
 exports.registerUser = (data, cb) => {
     const sql = `insert into new_user (userid, pw, name) values('${data.userid}', '${data.pw}', '${data.name}')`;
-    conn.query(sql, (err, addData) => {
+    conn.query(sql, (err) => {
         if(err) {
             throw err;
         }
-        console.log("addData", addData);
-        cb(addData.insertId);
+        cb();
     })
 }
 

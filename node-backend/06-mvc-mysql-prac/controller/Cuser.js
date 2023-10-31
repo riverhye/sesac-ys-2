@@ -6,16 +6,11 @@ exports.home = (req, res)=>{
 }
 
 // 회원가입
-exports.newRegister = (req, res) => {
-    getUser.registerUser(req.body, (id)=>{
-        // console.log("req.body만", req.body); // { userid: 'une', pw: '1234', name: '유네' }
-        res.send({
-            ...req.body,
-            id
-        })
+exports.post_signUp = (req, res) => {
+    getUser.registerUser(req.body, ()=>{
+        res.send({ result: true })
     })
 }
-
 
 // 로그인 화면
 exports.login = (req, res) => {

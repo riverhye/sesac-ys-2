@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <form name="user-form">
+        <div class="user-infos">
+            <input class="user-infos_info" type="text" name="userid" placeholder="아이디"/>
+            <br />
+            <input class="user-infos_info" type="password" name="pw" placeholder="비밀번호"/>
+            <br />
+            <input class="user-infos_info" type="text" name="name" placeholder="이름"/>
+        </div>
+        <div>
+            <button type="button" onclick="userRegister()">회원가입</button>
+        </div>
+    </form>
+
+    <script>
+        function userRegister() {
+            const form = document.forms["user-form"]
+                const data = {
+                userid: form.userid.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+
+            axios({
+                method: "POST",
+                url: "/register",
+                data: data
+            }).then((res)=>{
+                if(res.data.result) {
+                    alert("회원가입 성공");
+                } else {
+                    alert("회원가입 실패");
+                }
+            });
+        };
+    </script>
+</body>
+</html>

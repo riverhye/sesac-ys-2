@@ -8,44 +8,14 @@
 </head>
 <body>
     <form name="user-form">
-        <div class="user-infos">
-            <input class="user-infos_info" type="text" name="userid" placeholder="아이디"/>
-            <br />
-            <input class="user-infos_info" type="password" name="pw" placeholder="비밀번호"/>
-            <br />
-            <input class="user-infos_info" type="text" name="name" placeholder="이름"/>
-        </div>
         <div>
-            <button type="button" onclick="userRegister()">회원가입</button>
-        </div>
-        <div>
-            <a href="/login">로그인하러 가기</a>
+            <a href="/user/signup">회원가입</a>
+            <a href="/user/signin">로그인하러 가기</a>
         </div>
         <div id="result"></div>
     </form>
 
     <script>
-        function userRegister() {
-            const form = document.forms["user-form"]
-                const data = {
-                userid: form.userid.value,
-                pw: form.pw.value,
-                name: form.name.value
-            }
-
-            axios({
-                method: "POST",
-                url: "/register",
-                data: data
-            }).then((res)=>{
-                const {name} = res.data
-                const result = document.getElementById("result")
-                result.innerHTML = `${name}님 가입을 환영합니다.`
-                result.style.color = 'blue'
-                // data.userid
-                // data.pw
-            })
-        }
 
     </script>
 </body>
