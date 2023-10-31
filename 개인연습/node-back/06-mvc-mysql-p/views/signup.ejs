@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Stills The Show</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form name="user-form">
+        <div>
+            <input type="text" name="userid" placeholder="ID" />
+            <input type="password" name="pw" placeholder="PASSWORD" />
+            <input type="text" name="name" placeholder="NAME" />
+            <button type="button" onclick="signUp()">Sign Up</button>
+        </div>
+        <div id="result"></div>
+        <div>
+            <p>Already Sign Up?</p>
+            <a href="/signin">Sign In Here</a>
+        </div>
+    </form>
+
+    <script>
+        function signUp() {
+            const form = document.forms["user-form"]
+                const data = {
+                userid: form.userid.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+
+            axios({
+                method: "POST",
+                url: "/signup",
+                data: data
+            }).then((res) => {
+                const {result} = res.data
+                if(result) {
+                    alert("회원가입을 축하합니다!");
+                    location.href="/signin"
+                } else {
+                    alery("문제 발생");
+                };
+            })
+        }
+    </script>
+</body>
+</html>
