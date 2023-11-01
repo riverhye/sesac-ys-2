@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Stills The Show</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form name="user-form">
+        <div>
+            <input type="text" name="userid" value=<%= data.userid %> placeholder="ID" />
+            <input type="password" name="pw" value=<%= data.pw%> placeholder="PASSWORD" />
+            <input type="text" name="name" value=<%= data.name%> placeholder="NAME" />
+            <input type="hidden" name="id" value="<%= data.id %>" disabled />
+            <button type="button" onclick="userEdit()">
+                <span>Edit</span>
+            </button>
+            <button type="button" onclick="userDel()">
+                <span>Delete</span>
+            </button>
+        </div>
+        </div>
+    </form>
+
+    <script>
+        function userEdit() {
+            const form = document.forms["user-form"];
+            const data = {
+                userid: form.userid.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+            axios({
+                method: "patch",
+                url: `/profile/edit/${form.id.value}`,
+                data: data
+            }).then((res) => {
+                if(res.data.result) {
+                    alert("회원 정보 수정");
+                } else {
+                    alert("문제가 생겼습니다.");
+                };
+            });
+        };
+
+        function userDel() {
+            const form = document.forms["user-form"];
+            axios({
+                method: "delete",
+                url: `/profile/edit/${form.id.value}`
+            }).then((res) => {
+                if(res.data.result) {
+                    alert("탈퇴되었습니다.");
+                    location.href="/signin"
+                } else {
+                    alert("문제 발생");
+                };
+            });
+        };
+    </script>
+</body>
+</html>
