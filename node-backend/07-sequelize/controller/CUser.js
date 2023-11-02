@@ -25,20 +25,63 @@ exports.signIn = (req, res) => {
 };
 
 exports.postSignIn = (req, res) => {
-    // select * from new_user where userid=?? and pw=?? limit 1
     User.findOne({
         where: {
             userid: req.body.userid,
             pw: req.body.pw
         }
-    }).then((data) => {
+    }).then((result)=> {
+        console.log("result", result)
         res.send({
-            result: true,
-            data
+            success: true,
+            id: result.id
         });
-    });
+    })
 };
 
 exports.profile = (req, res) => {
-    res.render("profile");
+    User.findOne({
+        where: {
+            id: req.body.id
+        }
+    }).then((result) => { 
+        const data = {
+            userid: result.userid,
+            pw: result.pw,
+            name: result.name,
+            id: result.id,
+            success: true
+        }
+        if([result].length > 0) {
+            res.render("profile", {data: data});
+        } else {
+            res.redirect("signin");
+        };
+    });
+};
+
+
+exports.profileEdit = (req, res) => {
+    // update table_name set name=바꿀, pw=바꿀 where id=~~
+    const data = {
+        name: req.body.name,
+        pw: req.body.pw
+    }
+    User.update(data, {
+        where: {
+            id: req.params.id
+        }
+    }).then((result) => {
+        res.send({success: true});
+    });
+};
+
+exports.profileDel = (req, res) => {
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then((result) => {
+        res.send({success: true});
+    });
 };

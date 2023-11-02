@@ -16,7 +16,6 @@ userRouter.post("/signin", user.postSignIn);
 // 프로필 페이지
 userRouter.post("/profile", user.profile);
 userRouter.patch("/profile/edit/:id", user.profileEdit);
-
 userRouter.delete("/profile/edit/:id", user.profileDel);
 
 module.exports = userRouter;

@@ -59,7 +59,7 @@ exports.profile = (req, res) => {
         if([result].length > 0) {
             res.render("profile", {data: data})
         } else {
-            res.redirect("/signin");
+            res.redirect("signin");
         };
     });
 };

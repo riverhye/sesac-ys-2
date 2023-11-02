@@ -32,12 +32,11 @@
                 url: "/user/signin",
                 data: data
             }).then((res) => {
-                const data = res.data
-                console.log("res.data", res.data)
-                if(data.result) {
+                if(res.data.success) {
                     alert(`반갑습니다!`);
-                    form.id.value = data.id;
-                    document.forms["hidden-form"].submit();
+                    const form = document.forms["hidden-form"];
+                    form.id.value = res.data.id; // 여기서 id 바인딩
+                    form.submit();
                 } else {
                     alert("아이디나 비밀번호를 확인하세요.");
                 };

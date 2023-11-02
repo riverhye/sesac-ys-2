@@ -4,20 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원정보</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h2>회원정보</h2>
     <form name="user-form">
-        <input type="text" name="userid" placeholder="ID" />
+        <input type="text" name="userid" placeholder="ID" value="<%= data.userid %>"/>
         <br />
-        <input type="password" name="pw" placeholder="PASSWORD" />
+        <input type="password" name="pw" placeholder="PASSWORD" value="<%= data.pw %>" />
         <br />
-        <button type="button" onclick="edit()">수정</button>
-        <button type="button" onclick="del()">탈퇴</button>
+        <input type="text" name="name" placeholder="NAME" value="<%= data.name %>" />
+        <br />
+        <input type="hidden" name="id" value="<%= data.id %>" disabled />
+        <br />
+        <button type="button" onclick="edit()">
+            <sapn>수정</sapn>
+        </button>
+        <button type="button" onclick="del()">
+            <span>탈퇴</sapn>
+        </button>
     </form>
     
     <script>
+        function edit() {
+            const form = document.forms["user-form"];
+            const data = {
+                userid: form.userid.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+            console.log(form.id.value);
+            axios({
+                method: "patch",
+                url: `/user/profile/edit/${form.id.value}`,
+                data: data
+            }).then((res) => {
+                if(res.data.success) {
+                    alert("회원 정보 수정");
+                } else {
+                    alert("문제가 생겼습니다.");
+                };
+            });
+        };
 
+        function del() {
+            const form = document.forms["user-form"];
+            axios({
+                method: "delete",
+                url: `/user/profile/edit/${form.id.value}`
+            }).then((res) => {
+                if(res.data.success) {
+                    alert("탈퇴되었습니다.");
+                    location.href="/user/signin"
+                } else {
+                    alert("문제 발생");
+                };
+            });
+        };
     </script>
 </body>
 </html>
