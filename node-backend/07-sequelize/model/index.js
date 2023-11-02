@@ -20,5 +20,6 @@ db.Sequelize = Sequelize;
 // 함수 호출하니까 sequelize로 테이블을 정의한 객체를 return하네? 그걸 db.Visitor에 담겠다!
 db.Visitor = require("./Visitor")(sequelize, Sequelize);
 // 호출하는 이 시점에서 테이블 정의
+db.User = require("./Users")(sequelize, Sequelize);
 
 module.exports = db;

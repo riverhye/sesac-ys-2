@@ -35,5 +35,4 @@ function Visitor (Sequelize, DataTypes) {
     )
 }
 
-module.exports = Visitor;
-// 함수 자체를 exports
+module.exports = Visitor

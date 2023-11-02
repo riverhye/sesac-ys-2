@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h2>로그인</h2>
+    <form name="user-form">
+        <input type="text" name="userid" placeholder="ID" />
+        <br />
+        <input type="password" name="pw" placeholder="PASSWORD" />
+        <br />
+        <button type="button" onclick="signIn()">로그인</button>
+    </form>
+    <form action="/user/profile" method="post" name="hidden-form">
+        <input type="hidden" name="id" />
+    </form>
+
+    <script>
+        function signIn() {
+            const form = document.forms["user-form"];
+            const data = {
+                userid: form.userid.value,
+                pw: form.pw.value
+            };
+
+            axios({
+                method: "POST",
+                url: "/user/signin",
+                data: data
+            }).then((res) => {
+                const data = res.data
+                console.log("res.data", res.data)
+                if(data.result) {
+                    alert(`반갑습니다!`);
+                    form.id.value = data.id;
+                    document.forms["hidden-form"].submit();
+                } else {
+                    alert("아이디나 비밀번호를 확인하세요.");
+                };
+            });
+        };
+    </script>
+</body>
+</html>

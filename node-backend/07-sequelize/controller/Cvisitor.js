@@ -1,4 +1,4 @@
-const { Visitor } = require("../model") // index.js 가져옴
+const Visitor = require("../model") // index.js 가져옴
 // db 중에서 Visitor 함수만 델꼬옴
 
 exports.home = (req, res) => {
