@@ -26,6 +26,14 @@ app.get('/set', (req, res) => {
     console.log('set user', req.session.user)
 })
 
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if(err) throw err;
+        console.log("req.session", req.session);
+        res.send({result: true, msg:'로그아웃 되었습니다.'});
+    })
+})
+
 app.listen(port, () => {
     console.log(`${port} is open`)
 })

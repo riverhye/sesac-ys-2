@@ -33,6 +33,10 @@
         .result {
             color: black;
         }
+
+        .user-status {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -41,20 +45,19 @@
         <ul>
             <li>Menu1</li>
             <li>Menu2</li>
-            <li class="user-status">Log In</li>
+            <li class="user-status" onclick="logOut()">Log In</li>
         </ul>
     </div>
     <div class="result">로그인 먼저 해주세요.</div>
 
     <script>
+        const userStatus = document.querySelector('.user-status');
+        const greeting = document.querySelector('.result');
         axios({
             method: 'get',
             url: '/'
         }).then((result) => {
-            // req.session.user의 값(user 키)이 어디에 담긴 거지?
             console.log(result)
-            const userStatus = document.querySelector('.user-status');
-            const greeting = document.querySelector('.result');
             if('<%=user%>') {
                 userStatus.innerHTML = 'Log Out'
                 greeting.innerHTML = `<span><%=user%></span>님 반갑습니다!`
@@ -62,6 +65,19 @@
                 greeting.innerHTML = `로그인을 먼저 해주세요.`
             }
         })
+
+        function logOut() {
+            axios({
+                method: 'get',
+                url: '/logout'
+            }).then((res) => {
+                if(res.data.result) {
+                    alert(res.data.msg);
+                    location.href='/'
+                }
+            });
+        }
+        
     </script>
 </body>
 </html>
