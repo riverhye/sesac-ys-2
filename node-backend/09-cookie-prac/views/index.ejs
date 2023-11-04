@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div class="modal-overlay" id="modal">
+    <div class="modal-content">
+        <h2>딱 하루 특별 할인</h2>
+        <p>행사</p>
+        <input id="close" type="checkbox"><label for="close">오늘 하루 동안 보지 않기</label></button>
+        <button type="button" onclick="closeModal()">닫기</button>
+    </div>
+</div>
+
+<script>
+  if(document.cookie) document.getElementById("modal").style.display = "none";
+    function closeModal() {
+      const closeInput = document.getElementById("close");
+      let result;
+      if( closeInput.checked ) {
+        result = {data: true};
+      } 
+      else {
+        result = {data: false};
+      }
+      axios({
+        method: 'post',
+        url: '/cookie',
+        data: result
+      }).then((result) => {
+        if(result)
+            document.getElementById("modal").style.display = "none";
+      })
+    }
+</script>
+
+</body>
+</html>
