@@ -13,9 +13,14 @@ userRouter.post("/signup", user.postSignUp);
 userRouter.get("/signin", user.signIn);
 userRouter.post("/signin", user.postSignIn);
 
-// 프로필 페이지
-userRouter.post("/profile", user.profile);
+// 프로필 페이지 (폼 전송 - 세션 모를 때)
+// userRouter.post("/profile", user.profile);
+
+userRouter.get("/profile", user.profile);
+
 userRouter.patch("/profile/edit/:id", user.profileEdit);
 userRouter.delete("/profile/edit/:id", user.profileDel);
+
+userRouter.get("/logout", user.logOut);
 
 module.exports = userRouter;

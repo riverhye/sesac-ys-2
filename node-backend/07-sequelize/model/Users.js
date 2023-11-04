@@ -1,6 +1,6 @@
 function Users (Sequelize, DataTypes) {
     return Sequelize.define(
-        "new_user",
+        "still_user",
         {
             id: {
             type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ function Users (Sequelize, DataTypes) {
                 allowNull: false
         },
             name: {
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(10),
                 allowNull: false
         },
             pw: {
@@ -22,7 +22,7 @@ function Users (Sequelize, DataTypes) {
         }
     },
     {
-        tableName: "new_user",
+        tableName: "still_user",
         freezeTableName: true,
         timestamps: false
     })

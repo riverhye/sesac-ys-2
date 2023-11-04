@@ -26,7 +26,6 @@
                 userid: form.userid.value,
                 pw: form.pw.value
             };
-
             axios({
                 method: "POST",
                 url: "/user/signin",
@@ -34,9 +33,11 @@
             }).then((res) => {
                 if(res.data.success) {
                     alert(`반갑습니다!`);
-                    const form = document.forms["hidden-form"];
-                    form.id.value = res.data.id; // 여기서 id 바인딩
-                    form.submit();
+                    location.href='/user/profile'
+                    // POST profile 폼 전송 (세션 모를 때)
+                    // const form = document.forms["hidden-form"];
+                    // form.id.value = res.data.id; // 여기서 id 바인딩
+                    // form.submit();
                 } else {
                     alert("아이디나 비밀번호를 확인하세요.");
                 };

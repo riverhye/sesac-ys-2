@@ -25,6 +25,7 @@ exports.signIn = (req, res) => {
     res.render("signin");
 };
 
+// 로그인 성공 시 세션에 아이디 저장 
 exports.postSignIn = (req, res) => {
     User.findOne({
         where: {
@@ -32,8 +33,17 @@ exports.postSignIn = (req, res) => {
             pw: req.body.pw
         }
     }).then((result)=> {
-        if(result) res.send({success: true, id: result.id});
-        else res.send({success: false}); // 조건문 안 쓰면 id가 undefined라서 에러 뜸!
+        // {id: userid: pw: }
+        if(result) {
+            req.session.useridx = result.id
+            console.log("Get req.session.idx", req.session.idx)
+            res.send({success: true});
+        } else {
+            res.send({success: false});
+        }
+        // 폼 전송으로 id 보내려고 했을 때
+        // if(result) res.send({success: true, id: result.id});
+        // else res.send({success: false}); // 조건문 안 쓰면 id가 undefined라서 에러 뜸!
     });
 };
 
@@ -42,8 +52,9 @@ exports.postSignIn = (req, res) => {
 
 exports.profile = (req, res) => {
     User.findOne({
+        // 저장된 세션 id로 찾기
         where: {
-            id: req.body.id
+            id: req.session.useridx
         }
     }).then((result) => {
         console.log("profile result", result)
@@ -95,3 +106,12 @@ exports.profileDel = (req, res) => {
         else res.send({success: false});
     });
 };
+
+exports.logOut = (req, res) => {
+    req.session.destroy((err) => {
+        if(err) throw err;
+
+        console.log("req.session.idx Destroyed", req.session)
+        res.send({success: true, msg: "로그아웃 되었습니다."});
+    })
+}

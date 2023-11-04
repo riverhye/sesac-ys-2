@@ -23,6 +23,9 @@
         <button type="button" onclick="del()">
             <span>탈퇴</sapn>
         </button>
+        <button type="button" onclick="logout()">
+            <span>로그아웃</sapn>
+        </button>
     </form>
     
     <script>
@@ -54,6 +57,11 @@
 
         function del() {
             const form = document.forms["user-form"];
+            if(!form.checkValidity()) {
+                form.reportValidity();
+
+                return false;
+            }
             axios({
                 method: "delete",
                 url: `/user/profile/edit/${form.id.value}`
@@ -66,6 +74,18 @@
                 };
             });
         };
+
+        function logout() {
+            axios({
+                method: "get",
+                url: "/user/logout"
+            }).then((res) => {
+                if(res.data.success) {
+                    alert(res.data.msg);
+                    location.href="/user"
+                }
+            })
+        }
     </script>
 </body>
 </html>

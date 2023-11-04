@@ -1,7 +1,7 @@
 {
     "development": {
-        "host": "localhost",
-        "database": "sesac_test",
+        "host": "127.0.0.1",
+        "database": "db_study",
         "username": "user",
         "password": "name123$",
         "dialect": "mysql"
