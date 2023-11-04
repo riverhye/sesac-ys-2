@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            color: white;
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            background-color: black;
+        }
+        h2 {
+            margin: 10px 10px 0;
+            line-height: 100%;
+        }
+        ul {
+            width: 50%;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0;
+        }
+        li {
+            line-height: 100%;
+            list-style: none;
+        }
+
+        .result {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h2>Home</h2>
+        <ul>
+            <li>Menu1</li>
+            <li>Menu2</li>
+            <li class="user-status">Log In</li>
+        </ul>
+    </div>
+    <div class="result">로그인 먼저 해주세요.</div>
+
+    <script>
+        axios({
+            method: 'get',
+            url: '/'
+        }).then((result) => {
+            // req.session.user의 값(user 키)이 어디에 담긴 거지?
+            console.log(result)
+            const userStatus = document.querySelector('.user-status');
+            const greeting = document.querySelector('.result');
+            if('<%=user%>') {
+                userStatus.innerHTML = 'Log Out'
+                greeting.innerHTML = `<span><%=user%></span>님 반갑습니다!`
+            } else {
+                greeting.innerHTML = `로그인을 먼저 해주세요.`
+            }
+        })
+    </script>
+</body>
+</html>
