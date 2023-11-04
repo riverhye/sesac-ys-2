@@ -28,6 +28,11 @@
     <script>
         function edit() {
             const form = document.forms["user-form"];
+            if(!form.checkValidity()) {
+                form.reportValidity();
+
+                return false;
+            }
             const data = {
                 userid: form.userid.value,
                 pw: form.pw.value,
