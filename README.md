@@ -7,4 +7,4 @@ SeSAC 강의 Code 관리
 
 - git branch test4
 
-- pr test
+- pr test2
