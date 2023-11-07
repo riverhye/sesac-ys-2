@@ -6,3 +6,5 @@ SeSAC 강의 Code 관리
 - git branch test (ex. login api)
 
 - git branch test4
+
+- pr test
