@@ -1,0 +1,67 @@
+// section 2 : 코멘트 한 좋아요 - 마이페이지
+
+function clickLike(heart, commentid) {
+  axios({
+    method: 'post',
+    url: '/mypage/mycommentlike',
+    data: {
+      commentid: commentid
+    }
+  })
+  .then((res) => {
+    if(res.data.result) {
+      if (res.data.userLiked) {
+        heart.classList.add('heart-active');
+      }
+    else {
+      heart.classList.remove('heart-active');
+    }
+  } else {
+    alert(res.data.error)
+  }})
+  .catch(error => {
+    console.error(error);
+  });
+}
+
+
+
+
+// 아래는 CMypage.js// 메인에서 전달한 데이터
+exports.maintomycommentlike = async (req, res) => {
+  try {
+    const { commentid } = req.body;
+    const useridx = req.session.useridx;
+  
+    if(!useridx) {
+      res.send({result: false, error: '로그인 후 이용 가능한 기능입니다.'});
+      return
+    }
+    const likedComment = await Comment_like.findOne({
+      where: {
+        useridx: useridx,
+        commentid: commentid
+      }
+    });
+  
+    if (likedComment) {
+      await Comment_like.destroy({
+        where: {
+          useridx: useridx,
+          commentid: commentid
+        }
+      });
+  
+      res.send({result: true, userLiked: false});
+    } else {
+      await Comment_like.create({
+        commentid,
+        useridx
+      });
+  
+      res.send({result: true, userLiked: true});
+    }
+  } catch(err) {
+    res.send({error: 'Server Error'} )
+  }
+};
