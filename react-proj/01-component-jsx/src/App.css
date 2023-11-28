@@ -61,3 +61,78 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 40px 20px;
+}
+
+.product-card__img-body {
+  position: relative;
+}
+
+.product-card__img {
+  width: 250px;
+  height: 250px;
+}
+
+.product-card__ranking {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  color: whitesmoke;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  font-weight: 600;
+}
+
+.product-card__info {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card__brand-name {
+  text-decoration: underline;
+  margin-bottom: 7px;
+  font-size: 13px;
+}
+
+.product-card__product-name {
+  font-size: 12px;
+  height: 32px;
+  padding-right: 25px;
+  word-break: break-all;
+}
+
+.product-card__original-price {
+  opacity: 0.2;
+  font-size: 12px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.product-card__discount-rate,
+.product-card__current-price {
+  color: tomato;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Lucida Grande', Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+.product-card__icon-body {
+  display: flex;
+}
+
+.product-card__like-body,
+.product-card__comment-body {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.product-card__like-body {
+  margin-right: 50px;
+}
