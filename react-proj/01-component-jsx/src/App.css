@@ -1,0 +1,63 @@
+/* 보통 컴포넌트별 css 파일을 사용(CSS 중복 방지) */
+/* BUT 한 파일로 하고 싶다면 BEM 네이밍 규칙 잘 정해두기! */
+/* ex) .FuncComponent_test-css--active{} */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.test-css {
+  background-color: yellow;
+  font-size: 30px;
+}
+
+.hello-title {
+  width: 100%;
+  text-align: center;
+  background-color: orange;
+  color: wheat;
+}
+
+.hello-container {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hello-input {
+  margin: 20px 0;
+}
+
+.Section__section {
+  margin-bottom: 20px;
+  border: 2px solid blue;
+  padding: 10px 20px;
+}
+
+.Section__title {
+  color: tomato;
+}
+
+.PracticeBook__container {
+  background-color: blanchedalmond;
+}
+
+.PracticeBook__cover-title {
+  text-align: center;
+  color: tomato;
+}
+
+.PracticeBook__cover-img {
+  width: 150px;
+  height: 250px;
+}
+
+.PracticeBook__cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
