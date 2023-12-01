@@ -16,7 +16,6 @@ function HandlerEx() {
 
   function handleInput(e) {
     setInput(e.target.value);
-    console.log(input);
   }
 
   return (
