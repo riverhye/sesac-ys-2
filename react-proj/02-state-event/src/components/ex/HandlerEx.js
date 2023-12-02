@@ -1,72 +1,41 @@
 import { Component, useState } from 'react';
+import ColorSelect from './ColorSelect';
 
 function HandlerEx() {
   const [fruitImg, setFruitImg] = useState('apple');
-  const [bgColor, setBgColor] = useState('');
-  const [color, setColor] = useState('black');
   const [input, setInput] = useState('');
-
-  function handleBgColor(e) {
-    setBgColor(e.target.value);
-  }
-
-  function handleColor(e) {
-    setColor(e.target.value);
-  }
-
-  function handleInput(e) {
-    setInput(e.target.value);
-  }
+  const [bgColor, setBgColor] = useState('black');
+  const [color, setColor] = useState('black');
 
   return (
-    <>
-      <form>
-        <label for="fruits">과일 : </label>
-        <select
-          name="fruits"
-          onChange={(e) => setFruitImg(e.target.value)}
-          id="fruits"
-        >
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <div>
+        <label>과일 : </label>
+        <select onChange={(e) => setFruitImg(e.target.value)}>
           <option value="apple">사과</option>
           <option value="banana">바나나</option>
           <option value="peach">복숭아</option>
           <option value="orange">오렌지</option>
         </select>
-
-        <label for="bgcolors">배경색 : </label>
-        <select name="bgcolors" onChange={handleBgColor} id="bgcolors">
-          <option value="black">검정</option>
-          <option value="white">하양</option>
-          <option value="red">빨강</option>
-          <option value="orange">주황</option>
-          <option value="yellow">노랑</option>
-          <option value="green">초록</option>
-          <option value="blue">파랑</option>
-          <option value="purple">보라</option>
-          <option value="pink">분홍</option>
-        </select>
-
-        <label for="colors">글자색 : </label>
-        <select name="colors" onChange={handleColor} id="colors">
-          <option value="black">검정</option>
-          <option value="white">하양</option>
-          <option value="red">빨강</option>
-          <option value="orange">주황</option>
-          <option value="yellow">노랑</option>
-          <option value="green">초록</option>
-          <option value="blue">파랑</option>
-          <option value="purple">보라</option>
-          <option value="pink">분홍</option>
-        </select>
+        <ColorSelect mode="배경" onChange={(e) => setBgColor(e.target.value)} />
+        <ColorSelect mode="글자" onChange={(e) => setColor(e.target.value)} />
         <br />
-        <input type="text" onChange={handleInput} />
-      </form>
+        <label>내용 : </label>
+        <input type="text" onChange={(e) => setInput(e.target.value)} />
+      </div>
 
       <div style={{ width: '300px', height: '300px' }}>
         <img src={`/img/${fruitImg}.jpg`} />
       </div>
       <div style={{ backgroundColor: bgColor, color: color }}>{input}</div>
-    </>
+    </div>
   );
 }
 
