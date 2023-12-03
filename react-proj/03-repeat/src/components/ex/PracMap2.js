@@ -1,20 +1,34 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function PracMap2() {
   const [list, setList] = useState([{ id: null, name: '', title: '' }]);
-  const [name, setName] = useState([]);
-  const [title, setTitle] = useState([]);
+  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [searchMsg, setSearchMsg] = useState('검색 결과가 없습니다.');
-  const [mode, setMode] = useState('');
+  const [mode, setMode] = useState('name');
   const [searchInput, setSearchInput] = useState('');
   const [searchList, setSearchList] = useState([
     { id: null, name: '', title: '' },
   ]);
 
+  const nameInput = useRef();
+  const titleInput = useRef();
+
+  const inputFocus = (inputRef) => {
+    inputRef.current.focus();
+  };
+
+  const valid = () => {
+    if (name.trim().length === 0) inputFocus(nameInput);
+    if (title.trim().length === 0) inputFocus(titleInput);
+  };
+
   const addTable = () => {
     const newTr = { id: list.length, name: name, title: title };
     const newList = list.concat(newTr);
     setList(newList);
+    setName('');
+    setTitle('');
   };
 
   const searchResult = (input) => {
@@ -25,7 +39,7 @@ function PracMap2() {
         value.name.toLowerCase().includes(input)
       );
       setSearchList(searchTr);
-    } else if (mode === 'title') {
+    } else {
       const searchTr = list.filter((value) =>
         value.title.toLowerCase().includes(input)
       );
@@ -36,10 +50,23 @@ function PracMap2() {
   return (
     <>
       <fieldset>
-        작성자 : <input type="text" onChange={(e) => setName(e.target.value)} />
-        제목 : <input type="text" onChange={(e) => setTitle(e.target.value)} />
-        <button onClick={addTable}>작성</button>
+        작성자 :{' '}
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          ref={nameInput}
+        />
+        제목 :{' '}
+        <input
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          ref={titleInput}
+        />
+        <button onClick={() => (!name || !title ? valid() : addTable())}>
+          작성
+        </button>
       </fieldset>
+
       <select onChange={(e) => setMode(e.target.value)}>
         <option value="name">작성자</option>
         <option value="title">제목</option>
@@ -82,7 +109,6 @@ function PracMap2() {
       </table>
 
       <div style={{ margin: '30px' }}>{searchMsg}</div>
-      {searchMsg}
       <table border="1" style={{ width: '80%' }}>
         <thead
           style={{
