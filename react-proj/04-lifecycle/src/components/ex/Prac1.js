@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from '../../prac1.module.css';
 
 const fakePosts = [
   {
@@ -57,47 +58,46 @@ const fakePosts = [
 
 function PostList() {
   const [post, setPost] = useState([]);
+  let getFakePosts;
+
+  axios.get('https://jsonplaceholder.typicode.com/posts/').then((res) => {
+    getFakePosts = res.data;
+  });
 
   // 이중에서 10개만 보여주고 싶은데, get 요청으로 비동기 처리해도 순서가 뒤죽박죽 옴
   // 그래서 전체를 순차적으로 받고, 그걸 slice하려고 했음
   // BUT 배열 내 객체인데 콘솔에 찍어보니 undefiend 반환 : console.log(getFakePosts[0]);
-  // const tenFakePosts = getFakePosts.slice(0, 10);
 
   useEffect(() => {
-    const getFakePosts = [];
-    axios.get('https://jsonplaceholder.typicode.com/posts/').then((res) => {
-      getFakePosts.push(res.data);
-    });
-
-    // for문으로 돌리면 clearTimeout으로 지우기
-    let time;
-    if (post.length === 0) {
-      time = setTimeout(() => {
-        setPost(getFakePosts);
-      }, 2000);
-    } else {
-      clearTimeout(time);
-    }
+    setTimeout(() => {
+      setPost(getFakePosts);
+    }, 2000);
+    // let time;
+    // if (post.length === 0) {
+    //   time = setTimeout(() => {
+    //     setPost(getFakePosts);
+    //   }, 2000);
+    // } else {
+    //   clearTimeout(time);
+    // }
   });
 
   return (
-    <>
+    <div className={styles.boxContainer}>
       {post.length > 0 ? (
         post.map((val) => (
-          <div className="box-container">
-            <div className="box">
-              <div className="box-title">
-                No. {val.id} - {val.title}
-              </div>
-              <div className="box-body">{val.body}</div>
-              <br />
+          <div className={styles.box}>
+            <div className={styles.boxTitle}>
+              No. {val.id} - {val.title}
             </div>
+            <div className="box-body">{val.body}</div>
+            <br />
           </div>
         ))
       ) : (
         <h1>Loading...</h1>
       )}
-    </>
+    </div>
   );
 }
 

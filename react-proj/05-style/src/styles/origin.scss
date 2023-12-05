@@ -1,0 +1,85 @@
+// :root {
+//     --color-main: red;
+// }
+// div{
+//     color: var(--color-main);
+// }
+
+$color-main: red;
+
+// function style code block @mixin
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+// 사용할 땐 @include 키워드
+.box1 {
+  @include square(100px);
+  background-color: blue;
+}
+
+.box2 {
+  @include square(200px);
+  background-color: greenyellow;
+}
+
+.scss-parents {
+  color: $color-main;
+  //   width: '100vw' - '200px';
+  //   background-color: aquamarine;
+}
+
+.scss-parents {
+  ul {
+    background-color: black;
+    color: white;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  @extend .btn;
+  background-color: aqua;
+}
+
+// mixin-include, 중첩
+.origin-sass {
+  display: flex;
+  .box {
+    @include square(100px);
+
+    &.red {
+      background-color: red;
+    }
+
+    &.orange {
+      background-color: orange;
+    }
+
+    &.yellow {
+      background-color: yellow;
+    }
+
+    &.green {
+      background-color: green;
+    }
+
+    &.blue {
+      background-color: blue;
+    }
+
+    &.purple {
+      background-color: purple;
+    }
+  }
+}
