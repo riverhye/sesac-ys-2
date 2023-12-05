@@ -5,3 +5,11 @@
   background-color: aqua;
   color: white;
 }
+
+.box {
+  width: 300px;
+}
+
+.box-title {
+  font-size: 1.2rem;
+}
