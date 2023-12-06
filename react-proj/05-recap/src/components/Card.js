@@ -14,9 +14,7 @@ export default function Card() {
       await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=ko-KR
     `);
     const movielist = await response.json();
-    setInterval(() => {
-      setMovie(movielist.results);
-    }, 3000);
+    setMovie(movielist.results);
   };
 
   useEffect(() => {
