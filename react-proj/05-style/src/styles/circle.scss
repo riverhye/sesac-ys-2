@@ -17,7 +17,7 @@
 .circle.circle1 {
   background-color: pink;
   @include position(20px, 20px);
-  animation: clockMove1 5s ease;
+  animation: clockMove1 5s ease infinite;
 }
 .circle.circle2 {
   background-color: yellow;
