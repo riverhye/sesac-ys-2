@@ -1,0 +1,6 @@
+// 태블릿 768px
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}

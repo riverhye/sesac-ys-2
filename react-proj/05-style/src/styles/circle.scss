@@ -1,0 +1,32 @@
+@import './media';
+
+.circles {
+  position: relative;
+}
+
+.circle {
+  @include size(25px);
+  border-radius: 50px;
+  position: absolute;
+}
+
+@include move(1, 10px);
+@include move(2, 20px);
+@include move(3, 30px);
+
+.circle.circle1 {
+  background-color: pink;
+  @include position(20px, 20px);
+  animation: clockMove1 5s ease;
+}
+.circle.circle2 {
+  background-color: yellow;
+  @include position(90px, 90px);
+  animation: clockMove2 5s ease infinite;
+}
+
+.circle.circle3 {
+  background-color: green;
+  @include position(170px, 170px);
+  animation: clockMove3 5s ease infinite;
+}

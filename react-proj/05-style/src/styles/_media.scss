@@ -1,0 +1,39 @@
+@mixin position($top, $left) {
+  top: $top;
+  left: $left;
+}
+
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin eye($radius, $bgcolor) {
+  border-radius: $radius;
+  background-color: $bgcolor;
+}
+
+@mixin move($id, $number) {
+  @keyframes clockMove#{$id} {
+    0% {
+      top: 0;
+      left: 0;
+    }
+
+    25% {
+      left: $number;
+    }
+    50% {
+      top: $number;
+      left: -$number;
+    }
+    75% {
+      top: $number;
+      left: $number;
+    }
+    100% {
+      top: 0;
+      left: 0;
+    }
+  }
+}
