@@ -7,6 +7,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import PhotoPage from './pages/PhotoPage';
 import PhotoDetail from './pages/PhotoDetail';
+import PracSignUp from './pages/PracSignUp';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/photos" element={<PhotoPage />} />
             <Route path="/photo/:id" element={<PhotoDetail />} />
+            <Route path="/signup" element={<PracSignUp />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
