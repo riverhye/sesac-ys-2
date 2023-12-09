@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import Detail from '../components/Detail';
 
 export default function ProductDetailPage() {
   const [product, setProduct] = useState(null);
@@ -72,11 +73,7 @@ export default function ProductDetailPage() {
           setQuery 테스트
         </button> */}
         {product ? (
-          <ul>
-            <li>상품 번호 : {product.id}</li>
-            <li>상품명 : {product.title}</li>
-            <li>상품 내용 : {product.body}</li>
-          </ul>
+          <Detail mode="product" product={product} />
         ) : (
           <div>{msg}</div>
         )}

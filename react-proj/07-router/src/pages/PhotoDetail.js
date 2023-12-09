@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Detail from '../components/Detail';
 
 export default function PhotoDetail() {
   const [photo, setPhoto] = useState(null);
@@ -19,21 +20,7 @@ export default function PhotoDetail() {
 
   return (
     <>
-      <ul>
-        {photo ? (
-          <>
-            <li>이미지 번호 : {photo.id}</li>
-            <li>이미지 제목 : {photo.title}</li>
-            <li>
-              <div>
-                이미지 : <img src={`${photo.url}`} alt="이미지" />
-              </div>
-            </li>
-          </>
-        ) : (
-          'Loading...'
-        )}
-      </ul>
+      <ul>{photo ? <Detail mode="photo" photo={photo} /> : 'Loading...'}</ul>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import AllDetail from '../components/AllDetail';
 
 export default function PhotoPage() {
   const [photo, setPhoto] = useState(null);
@@ -19,19 +20,7 @@ export default function PhotoPage() {
       {photo ? (
         <>
           {photo.map((value) => (
-            <ul key={value.id}>
-              <li>이미지 번호 : {value.id}</li>
-              <li>이미지 제목 : {value.title}</li>
-              <li>
-                이미지 :{' '}
-                <div>
-                  <img src={`${value.url}`} alt="상품 이미지" />
-                </div>
-              </li>
-              <a
-                href={`/photo/${value.id}`}
-              >{`${value.id}번 상세페이지 이동하기`}</a>
-            </ul>
+            <AllDetail mode="photo" value={value} />
           ))}
         </>
       ) : (
