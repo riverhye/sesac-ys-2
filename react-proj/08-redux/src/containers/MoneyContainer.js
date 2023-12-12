@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import Money from '../components/Money';
 import { deposit, withdraw } from '../store/moneyReducer';
 
-export function MoneyContainer() {
-  // money state가 어딨지..?
+export const MoneyContainer = () => {
   const money = useSelector((state) => state.money);
-
   const dispatch = useDispatch();
-  const moneyDeposit = (amount) => dispatch(deposit(amount));
-  const moneyWithdraw = (amount) => dispatch(withdraw(amount));
+
+  const moneyDeposit = (payload) => {
+    dispatch({ ...deposit(), payload: payload });
+  };
+  const moneyWithdraw = (payload) => {
+    dispatch({ ...withdraw(), payload: payload });
+  };
 
   return (
     <Money
@@ -17,4 +20,4 @@ export function MoneyContainer() {
       moneyWithdraw={moneyWithdraw}
     />
   );
-}
+};

@@ -95,10 +95,11 @@ import PracRedux from './PracRedux';
 
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import moneyReducer from './store';
+import rootReducer from './store';
 
-const store = configureStore({ reducer: moneyReducer });
+const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
