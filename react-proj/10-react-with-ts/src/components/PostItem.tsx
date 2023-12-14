@@ -1,6 +1,11 @@
-const PostItem = (props) => {
-  const { post } = props;
+import { Post } from '../types/types';
 
+interface Props {
+  key: number;
+  post: Post;
+}
+
+const PostItem = ({ key, post }: Props) => {
   return (
     <div className="PostItem">
       <div>

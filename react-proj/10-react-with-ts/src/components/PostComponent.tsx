@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import PostItem from './PostItem';
 
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
+import { Post } from '../types/types';
 
 const PostList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
