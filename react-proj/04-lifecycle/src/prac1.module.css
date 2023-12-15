@@ -1,3 +1,7 @@
+.wrapper {
+  margin-top: 20px;
+}
+
 .boxContainer {
   display: flex;
   flex-wrap: wrap;

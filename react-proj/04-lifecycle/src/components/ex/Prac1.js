@@ -60,17 +60,22 @@ function PostList() {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    let getFakePosts;
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts/')
-      .then((res) => {
-        getFakePosts = res.data;
-      })
-      .catch((err) => console.log('err : ', err));
-    setTimeout(() => {
-      setPost(getFakePosts.slice(0, 10));
-    }, 2000);
-  });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'https://jsonplaceholder.typicode.com/posts/'
+        );
+        const getFakePosts = response.data;
+        setTimeout(() => {
+          setPost(getFakePosts.slice(0, 10));
+        }, 2000);
+      } catch (err) {
+        console.error('fetch Data Err :', err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.boxContainer}>
@@ -80,7 +85,7 @@ function PostList() {
             <div className={styles.boxTitle}>
               No. {val.id} - {val.title}
             </div>
-            <div className="box-body">{val.body}</div>
+            <div>{val.body}</div>
             <br />
           </div>
         ))
