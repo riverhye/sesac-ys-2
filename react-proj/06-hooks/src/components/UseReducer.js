@@ -12,6 +12,8 @@ const reducer = (prevState, action) => {
       return initialValue;
     case 'MULTIFLY':
       return { value: prevState.value * action.number };
+    case 'DIVIDE':
+      return { value: prevState.value / action.number };
     default:
       return { value: prevState.value };
   }
@@ -39,6 +41,7 @@ export default function UseReducer() {
   const minus = () => dispatch({ type: 'MINUS' });
   const reset = () => dispatch({ type: 'RESET' });
   const multifly = () => dispatch({ type: 'MULTIFLY', number: number });
+  const divide = () => dispatch({ type: 'DIVIDE', number: number });
 
   return (
     <>
@@ -51,6 +54,7 @@ export default function UseReducer() {
         <br />
         <input type="number" value={number} onChange={handleChangeNumber} />
         <button onClick={multifly}>곱하기</button>
+        <button onClick={divide}>나누기</button>
       </div>
     </>
   );

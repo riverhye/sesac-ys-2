@@ -4,6 +4,9 @@ import CustomHookEx from './components/CustomHookEx';
 import ComputeExpensive from './components/ComputeExpensive';
 import PracUseMemo from './components/ex/PracUseMemo';
 import PracUseCallback from './components/ex/PracUseCallback';
+import Counter from './hooks/Ex/Counter';
+import SearchWord from './hooks/Ex/SearchWord';
+import ItemList from './hooks/Ex/ItemList';
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
       {/* <ComputeExpensive /> */}
       <br />
       {/* <PracUseMemo /> */}
-      <PracUseCallback />
+      {/* <PracUseCallback /> */}
+      {/* <Counter /> */}
+      {/* <SearchWord /> */}
+      <ItemList />
     </div>
   );
 }
