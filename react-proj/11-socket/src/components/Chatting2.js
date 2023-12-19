@@ -27,6 +27,8 @@ export default function Chatting2() {
   const [userIdInput, setUserIdInput] = useState('');
   const [userId, setUserId] = useState(null);
 
+  const [failMsg, setFailMsg] = useState('');
+
   const initSocketConnect = () => {
     // console.log('socket connected', socket.connected);
     if (!socket.connected) socket.connect();
@@ -36,9 +38,14 @@ export default function Chatting2() {
 
   useEffect(() => {
     const notice = (res) => {
-      const newChatList = [...chatList, { type: 'notice', content: res.msg }];
+      if (res.result) {
+        const newChatList = [...chatList, { type: 'notice', content: res.msg }];
 
-      setChatList(newChatList);
+        setChatList(newChatList);
+        setUserId(userIdInput);
+      } else {
+        setFailMsg(res.msg);
+      }
     };
 
     socket.on('notice', notice);
@@ -47,10 +54,13 @@ export default function Chatting2() {
   }, [chatList]);
 
   const sendMsg = () => {};
+
   const entryChat = () => {
     initSocketConnect();
     socket.emit('entry', { userId: userIdInput });
-    setUserId(userIdInput);
+
+    // userId 중복 확인 -> result: true면 setUserId(userIdInput), false면 중복된 닉네임입니다. (msg)
+    // setUserId(userIdInput);
   };
 
   return (
@@ -97,6 +107,8 @@ export default function Chatting2() {
               🖐️
             </button>
           </div>
+          {/* result가 제대로 안 되면..? */}
+          <div>{failMsg}</div>
         </div>
       )}
     </div>
