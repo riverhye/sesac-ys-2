@@ -54,43 +54,51 @@ export default function Chatting2() {
   };
 
   return (
-    <>
-      <h3>닉네임 입력 받고 입장, 닉네임 중복 방지, 퇴장시키기</h3>
-
+    <div className="wrapper-container">
       {userId ? (
         <>
-          <div>{userId}님 환영합니다.</div>
-          <div className="chat-container">
-            {/* type별로 컴포넌트 분리 */}
-            {chatList.map((chat, i) => {
-              if (chat.type === 'notice') return <Notice chat={chat} />;
-              else return <Chat chat={chat} i={i} />;
-            })}
-          </div>
-          <div className="input-container">
-            <input
-              type="text"
-              value={msgInput}
-              onChange={(e) => setMsgInput(e.target.value)}
-            />
-            <button className="input-button" onClick={sendMsg}>
-              전송
-            </button>
+          <div className="greeting">Hello, {userId}!</div>
+          <div className="chat-wrapper">
+            <div className="chat-container">
+              {/* type별로 컴포넌트 분리 */}
+              {chatList.map((chat, i) => {
+                if (chat.type === 'notice') return <Notice chat={chat} />;
+                else return <Chat chat={chat} i={i} />;
+              })}
+            </div>
+            <div className="input-container">
+              <input
+                type="text"
+                value={msgInput}
+                placeholder="메시지를 입력하세요."
+                onChange={(e) => setMsgInput(e.target.value)}
+              />
+              <button className="input-button" onClick={sendMsg}>
+                ✉︀
+              </button>
+            </div>
           </div>
         </>
       ) : (
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="사용할 닉네임을 입력하세요."
-            value={userIdInput}
-            onChange={(e) => setUserIdInput(e.target.value)}
-          />
-          <button className="input-button" onClick={entryChat}>
-            입장
-          </button>
+        <div className="entry-container">
+          <ul>
+            <li>✅ 닉네임 입력 후 입장</li>
+            <li>✅ 닉네임 중복 방지</li>
+            <li>✅ 퇴장시키기</li>
+          </ul>
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="사용할 닉네임을 입력하세요."
+              value={userIdInput}
+              onChange={(e) => setUserIdInput(e.target.value)}
+            />
+            <button className="input-button" onClick={entryChat}>
+              🖐️
+            </button>
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
