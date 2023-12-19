@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Socket example with ejs</title>
+    <!-- 서버에서 설치한 socket.io 모듈 가져와 사용(socket io cdn) -->
+    <!-- src 경로 : node_modules/socket.io 폴더 내 socket.io.js 파일 -->
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h3>소켓 연습</h3>
+    <button onclick="hello()">hello</button>
+    <button onclick="entry()">entry</button>
+    <script>
+      // 가져온 socket 사용하기
+      // PORT가 서버와 동일하게 8000으로 열리므로 파라미터X
+      const socket = io();
+
+      // 소켓으로 데이터 전송하는 함수 : emit
+      // 소켓으로 데이터 수신하는 이벤트 : on
+
+      // (전송할 이벤트 이름[, 전송할 데이터])
+      // 전송할 데이터 형태는 자유 (문자열, 객체, ...)
+      function hello() {
+        socket.emit("hello", {
+          msg: '안녕하세요'
+        });
+      }
+
+      // 여러번 호출할 함수 내부에 이벤트 등록 시,
+      // 해당 함수를 호출할 때마다 이벤트 등록(누적됨)
+      // WHY ? 이벤트는 선언할 때가 아닌 동작할 때 실행되니까 동작할 때마다 발생하는 것.
+      // ex. hello함수 내부에 bye 이벤트 넣어두면 버튼 클릭할 때마다 누적으로 이벤트 발생
+      socket.on('bye', (res) => {
+        console.log('res', res);
+      });
+
+      function entry() {
+        socket.emit('entry');
+      }
+
+      socket.on('notice', (res) => {
+        console.log(res.msg);
+      })
+    </script>
+  </body>
+</html>

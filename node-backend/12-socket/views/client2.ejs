@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <button onclick="hello()">hello</button>
+    <button onclick="study()">study</button>
+    <button onclick="bye()">bye</button>
+    <div id="msg"></div>
+  </body>
+  <script>
+    const socket = io();
+
+    function hello() {
+      socket.emit('hello', {
+        msg: 'hello'
+      });
+    }
+
+    function study() {
+      socket.emit('study', {
+        msg: 'study'
+      });
+    }
+
+    function bye() {
+      socket.emit('bye', {
+        msg: 'bye'
+      });
+    }
+
+    socket.on('hello result', (res) => {
+      const result = document.getElementById('msg');
+      result.innerHTML = `${res.name} : ${res.msg}`;
+    })
+
+    socket.on('study result', (res) => {
+      const result = document.getElementById('msg');
+      result.innerHTML = `${res.name} : ${res.msg}`;
+    })
+
+    socket.on('bye result', (res) => {
+      const result = document.getElementById('msg');
+      result.innerHTML = `${res.name} : ${res.msg}`;
+    })
+  </script>
+</html>
