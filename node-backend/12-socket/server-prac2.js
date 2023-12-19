@@ -14,16 +14,23 @@ const io = require('socket.io')(server, {
   },
 });
 
+const userIdArr = {};
+// {"socket.id": "userId"}
+
 io.on('connection', (socket) => {
   console.log('socket id', socket.id);
 
   // entry에 입력한 닉네임(userIdInput)을 받아와서 전체 공지
   socket.on('entry', (res) => {
+    // 변수 자체를 key로 넣기 위해 대괄호 표기법 사용
+    userIdArr[socket.id] = res.userId;
     io.emit('notice', { msg: `${res.userId}님이 입장했습니다.` });
   });
 
+  // 위에서 닉네임의 userId를 socket.id로 넣어놔서, 해당 유저를 지움
   socket.on('disconnect', () => {
-    io.emit('notice', { msg: `~~님이 퇴장하셨습니다.` });
+    io.emit('notice', { msg: `${userIdArr[socket.id]}님이 퇴장했습니다.` });
+    delete userIdArr[socket.id];
   });
 });
 

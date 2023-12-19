@@ -17,23 +17,22 @@ export default function Chatting2() {
       type: 'other',
       content: '그래 안녕',
     },
-    {
-      type: 'notice',
-      content: '~~님이 입장했습니다.',
-    },
+    // {
+    //   type: 'notice',
+    //   content: '~~님이 입장했습니다.',
+    // },
   ]);
 
+  // [ input onChange 저장 & 닉네임 저장 ]
   const [userIdInput, setUserIdInput] = useState('');
   const [userId, setUserId] = useState(null);
 
   const initSocketConnect = () => {
-    console.log('socket connected', socket.connected);
+    // console.log('socket connected', socket.connected);
     if (!socket.connected) socket.connect();
   };
 
-  useEffect(() => {
-    // initSocketConnect();
-  }, []);
+  // 채팅방에 들어갔을 때 initSocketConnect();
 
   useEffect(() => {
     const notice = (res) => {
@@ -56,7 +55,7 @@ export default function Chatting2() {
 
   return (
     <>
-      <h3>닉네임 입력 받고 입장, 닉네임 중복 방지, 강퇴</h3>
+      <h3>닉네임 입력 받고 입장, 닉네임 중복 방지, 퇴장시키기</h3>
 
       {userId ? (
         <>
