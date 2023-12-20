@@ -54,13 +54,8 @@ export default function Chatting2() {
   const sendMsg = () => {};
 
   const entryChat = () => {
-    // 소켓 연결, userId 전달
-    // -> userIdArr 안에 res.userId가 있는지 확인 {socket.id: 닉넴1, socket.id: 닉넴2, ...} & 결과값 전달
-    // -> 결과 받아서 각각 처리 (근데 이게 notice로 오니까 이부분은 entryChat이 아니지 않나?
     initSocketConnect();
     socket.emit('entry', { userId: userIdInput });
-    // 아! 여기서 setUserId를 바꿔줘야 화면 전환이 되겠구나..??
-    // setUserId(userIdInput);
   };
 
   return (
