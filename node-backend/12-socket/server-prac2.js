@@ -15,26 +15,30 @@ const io = require('socket.io')(server, {
 });
 
 let userIdArr = {};
-// userIdArr[socket.id] = '안녕' -> 'socket.id': '안녕'
-// {"socket.id": "userId", "socket.id": "userId"}
 
 io.on('connection', (socket) => {
   console.log('socket id', socket.id);
 
+  // 중복 닉네임 방지
   socket.on('entry', (res) => {
-    if (Object.keys(userIdArr).find((key) => userIdArr[key] !== res.userId)) {
-      // 아님 : userIdArr에 지금 거 추가하고 전체 공지
+    if (Object.keys(userIdArr).length > 0) {
+      if (Object.values(userIdArr).includes(res.userId)) {
+        socket.emit('notice', { result: false, msg: '중복된 닉네임입니다.' });
+      } else {
+        userIdArr[socket.id] = res.userId;
+        io.emit('notice', {
+          result: true,
+          msg: `${res.userId}님이 입장했습니다.`,
+        });
+      }
+    } else {
+      userIdArr[socket.id] = res.userId;
       io.emit('notice', {
         result: true,
         msg: `${res.userId}님이 입장했습니다.`,
       });
-    } else {
-      // 중복 : fail 메세지
-      socket.emit('notice', { result: false, msg: '중복된 닉네임입니다.' });
     }
   });
-
-  console.log(userIdArr);
 
   // 위에서 닉네임의 userId를 socket.id로 넣어놔서, 해당 유저를 지움
   socket.on('disconnect', () => {
