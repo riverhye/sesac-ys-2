@@ -22,34 +22,15 @@ io.on('connection', (socket) => {
   console.log('socket id', socket.id);
 
   socket.on('entry', (res) => {
-    let isDuplicate = false;
-
-    // 객체 마지막 요소로 추가?
-    // 객체의 키가 변수일 때 순회하면서 할당하는 걸 모르겠네..
-    for (userId in userIdArr) {
-      if (userid !== res.userId) {
-        userid = res.userId;
-      }
-    }
-
-    // 변수 자체를 key로 넣기 위해 대괄호 표기법 사용
-    for (const key in userIdArr) {
-      if (key[socket.id] !== res.userId) {
-        key[socket.id] = res.userId;
-
-        // entry에 입력한 닉네임(userIdInput)을 받아와서 전체 공지
-        io.emit('notice', {
-          result: true,
-          msg: `${res.userId}님이 입장했습니다.`,
-        });
-      } else if (key === socket.id) {
-        isDuplicate = true;
-        socket.emit('notice', { result: false, msg: '중복된 닉네임입니다.' });
-      }
-    }
-
-    if (!isDuplicate) {
-      userIdArr[socket.id] = res.userId;
+    if (Object.keys(userIdArr).find((key) => userIdArr[key] !== res.userId)) {
+      // 아님 : userIdArr에 지금 거 추가하고 전체 공지
+      io.emit('notice', {
+        result: true,
+        msg: `${res.userId}님이 입장했습니다.`,
+      });
+    } else {
+      // 중복 : fail 메세지
+      socket.emit('notice', { result: false, msg: '중복된 닉네임입니다.' });
     }
   });
 
