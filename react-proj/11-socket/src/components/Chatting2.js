@@ -102,7 +102,6 @@ export default function Chatting2() {
               🖐️
             </button>
           </div>
-          {/* result가 제대로 안 되면..? */}
           <div>{failMsg}</div>
         </div>
       )}
