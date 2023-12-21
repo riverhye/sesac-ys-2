@@ -91,18 +91,20 @@ export default function Chatting2() {
             <li>✅ 닉네임 중복 방지</li>
             <li>✅ 퇴장시키기</li>
           </ul>
-          <div className="input-container">
-            <input
-              type="text"
-              placeholder="사용할 닉네임을 입력하세요."
-              value={userIdInput}
-              onChange={(e) => setUserIdInput(e.target.value)}
-            />
-            <button className="input-button" onClick={entryChat}>
-              🖐️
-            </button>
+          <div className="input-wrapper">
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="사용할 닉네임을 입력하세요."
+                value={userIdInput}
+                onChange={(e) => setUserIdInput(e.target.value)}
+              />
+              <button className="input-button" onClick={entryChat}>
+                🖐️
+              </button>
+            </div>
+            <div>{failMsg}</div>
           </div>
-          <div>{failMsg}</div>
         </div>
       )}
     </div>

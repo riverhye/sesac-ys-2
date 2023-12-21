@@ -117,3 +117,9 @@ ul {
   color: transparent;
   -webkit-background-clip: text;
 }
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  color: rgb(237, 222, 22);
+}
