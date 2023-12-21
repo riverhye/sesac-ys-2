@@ -33,6 +33,11 @@ ul {
   font-size: 14px;
 }
 
+.list .chat-nickname {
+  color: white;
+  font-size: 11px;
+}
+
 .chat-container .my-chat {
   padding: 7px 10px;
   text-align: right;
