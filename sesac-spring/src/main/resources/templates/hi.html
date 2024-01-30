@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- hi.html 에서 thymeleaf 템플릿 문법을 사용하겠다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>hi</title>
+</head>
+<body>
+    <h1>Hi Template</h1>
+    <h5>th:text = 전달 받은 값을 문자열로 보여주는 속성</h5>
+    <!--  & 전달 받은 게 없다면 텍스트를 아예 안 보여줌  -->
+    <p th:text="${name}">코딩온</p>
+    <p th:text="${key}">새싹</p>
+    <h5>th:utext = 전달 받은 값을 html 로 보여주는 속성</h5>
+    <!-- cf. innerHTML, innerTEXT -->
+    <p th:text="${name2}">새싹</p>
+    <p th:utext="${name2}">새싹</p>
+    <br />
+    <h5>th:value = 요소에 value 값 설정</h5>
+    <input type="text" th:value="${name}"/>
+    <button th:value="${name}">버튼</button>
+
+    <h5>th:with = 템플릿 내에서 변수를 지정해서 사용할 때</h5>
+    <div th:with="temp=${name}" th:text="${temp}"></div>
+
+    <h5>th:switch = switch-case</h5>
+    <div th:switch="${name}">
+    <!--  템플릿 문법"" 이지, 문자열을 의미하는 게 아니라서 작은 따옴표로 감싸 표현 -->
+    <!-- cf. JSX에서의 style={{}} -->
+        <p th:case="'코딩온'">코딩온입니다</p>
+        <p th:case="'새싹'">새싹입니다</p>
+        <p th:case="*">뭣도 아닌</p>
+    <!-- 와일드카드는 문자열이 아님! -->
+    </div>
+
+    <h5>th:if = 조건문 (elseif 없음)</h5>
+    <p th:if="${name}=='코딩온'" th:text="${name}"></p>
+    <p th:unless="${name}=='코딩온'" th:text="'홍길동'"></p>
+    <!-- warning : if else 로 쓰려면? th:if와 th:unless 동일 조건을 가져야 한다. -->
+
+    <h5>th:each</h5>
+    <ul>
+        <li th:each="item:${item1}">
+            <span th:text="${item}"></span>
+        </li>
+    </ul>
+</body>
+</html>
