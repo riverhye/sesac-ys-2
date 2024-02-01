@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>user form</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<h1>POST 폼 전송</h1>
+<form action="/user" method="post" id="formEx" >
+    <fieldset>
+        <label>
+            이름 <input type="text" name="name" />
+        </label>
+        <br />
+        성별
+        <label>
+            <input type="radio" name="gender" value="여성" />여성
+        </label>
+        <label>
+            <input type="radio" name="gender" value="남성" />남성
+        </label>
+        <br />
+        <label>
+            생년월일
+            <select name="year">
+                <option th:each="year:${years}" th:value="${year}" th:text="${year}"></option>년
+            </select>
+            <select name="month">
+                <option th:each="month:${months}" th:value="${month}" th:text="${month}"></option>월
+            </select>
+            <select name="day">
+                <option th:each="day:${days}" th:value="${day}" th:text="${day}"></option>일
+            </select>
+        </label>
+        <br />
+        <label>
+            관심사
+            <input id="travel" type="checkbox" name="interest" value="여행" /><label for="travel">여행</label>
+            <input id="fashion" type="checkbox" name="interest" value="패션" /><label for="fashion">패션</label>
+            <input id="food" type="checkbox" name="interest" value="음식" /><label for="food">음식</label>
+        </label>
+        <br />
+        <button type="button" onClick="axiosPost()">회원가입</button>
+    </fieldset>
+</form>
+</body>
+<script>
+    function axiosPost() {
+    var form = document.getElementById('formEx');
+    axios.post(`/form`, {name: form.name.value})
+    .then((res)=>{
+        console.log( res.data  );
+    });
+}
+</script>
+</html>
