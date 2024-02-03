@@ -1,7 +1,7 @@
-package com.sesac.sesacspring.controller;
+package controllerApi;
 
-import com.sesac.sesacspring.dto.UserDTO;
-import com.sesac.sesacspring.vo.UserVO;
+import controllerApi.dto.UserDTO;
+import controllerApi.vo.UserVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

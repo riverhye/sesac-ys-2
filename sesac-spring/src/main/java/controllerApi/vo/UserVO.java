@@ -1,4 +1,4 @@
-package com.sesac.sesacspring.vo;
+package controllerApi.vo;
 
 import lombok.Getter;
 

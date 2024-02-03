@@ -1,4 +1,4 @@
-package com.sesac.sesacspring.controller;
+package controllerApi;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

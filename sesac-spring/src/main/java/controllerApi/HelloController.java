@@ -1,10 +1,8 @@
-package com.sesac.sesacspring.controller;
+package controllerApi;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
 
 @Controller
 // @Controller : 해당 클래스가 Controller 역할을 하는 클래스임을 Spring Container 에 알려준다.

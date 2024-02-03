@@ -1,4 +1,4 @@
-package com.sesac.sesacspring.controller;
+package controllerApi;
 
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
