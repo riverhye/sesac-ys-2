@@ -3,6 +3,7 @@ package com.sesac.sesacspring.service;
 import com.sesac.sesacspring.domain.BoardUser;
 import com.sesac.sesacspring.dto.BoardUserDTO;
 import com.sesac.sesacspring.mapper.BoardUserMapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,9 @@ public class BoardUserService {
     public void updateBoard(){}
     public void deleteBoard(BoardUserDTO boardUser){
 //        boardUserMapper.deleteBoard(boardUser);
+    }
+
+    public void searchBoard(String title){
+        boardUserMapper.searchData(title);
     }
 }

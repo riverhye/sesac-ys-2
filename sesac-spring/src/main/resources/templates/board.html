@@ -13,7 +13,6 @@
                 alert('일치하는 제목의 게시글은 ' + res.data + '개 입니다.');
             });
         }
-
         function writeBoard() {
             // 제목, 내용, 작성자를 입력하고 "작성"버튼 눌렀을 때
             var form = document.getElementById('form_board');
@@ -40,7 +39,7 @@
             });
         }
         function deleteBoard(id) {
-            axios.delete(`/board?id=${id}`).then((res) => {
+            axios.delete(`/board/?id=${id}`).then((res) => {
                 location.reload();
             });
         }
