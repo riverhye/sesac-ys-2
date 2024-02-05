@@ -1,4 +1,4 @@
-package com.sesac.sesacspring.domain;
+package com.sesac.sesacspring.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,8 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
-public class BoardUser {
+
+public class BoardDTO {
     private int id;
     private String title;
     private String content;
