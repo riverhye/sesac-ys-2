@@ -1,4 +1,4 @@
-package controllerApi.dto;
+package com.sesac.sesacspring.api.dto;
 
 import lombok.Getter;
 import lombok.Setter;
