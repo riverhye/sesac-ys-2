@@ -2,12 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sesac.sesacspring.mapper.BoardMapper">
+<mapper namespace="com.sesac.sesacspring.mybatis.mapper.BoardMapper">
     <select id="boards"
-            resultType="com.sesac.sesacspring.domain.Board">
-        SELECT boardUser.* FROM boardUser
+            resultType="com.sesac.sesacspring.mybatis.domain.Board">
+        SELECT * FROM board
     </select>
-<!--    <delete id="deleteBoard" parameterType="int">-->
-<!--        DELETE FROM boardUser WHERE id=#{id}-->
-<!--    </delete>-->
+
+    <insert id="insertBoard" parameterType="com.sesac.sesacspring.mybatis.domain.Board">
+        insert into board(id, title, content, writer, registered) values(#{id}, #{title}, #{content}, #{writer}, NOW())
+    </insert>
+
+    <update id="patchBoard" parameterType="com.sesac.sesacspring.mybatis.domain.Board">
+        UPDATE board SET title=#{title}, content=#{content}, writer=#{writer} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteBoard" parameterType="Integer">
+    <!-- parameterType 은 "map" 으로 써도 됨 BUT 정확하게는 parameterType 정확히(경로) 작성 -->
+    <!-- 여기선 int id만 받기 때문에 type 하나로 명시 -->
+        DELETE FROM board WHERE id=#{id}
+    </delete>
+
+    <select id="searchBoard" parameterType="String" resultType="com.sesac.sesacspring.mybatis.domain.Board">
+<!-- 동적 쿼리 생성 -->
+<!--      조건 1. 검색어가 없으면 전체 검색 (SELECT * FROM board) -->
+<!--      조건 2. 검색어가 있으면 검색어와 제목이 일치하는 것 ( where title = #{word} ) -->
+<!--       SELECT * FROM board WHERE title = #{word} -->
+<!--     동적이지 않아도 되는, 즉 중복 쿼리 먼저 작성   -->
+        SELECT * FROM board
+        <where>
+            <if test="word != ''">
+                AND title=#{word}
+            </if>
+        </where>
+    </select>
+
 </mapper>
