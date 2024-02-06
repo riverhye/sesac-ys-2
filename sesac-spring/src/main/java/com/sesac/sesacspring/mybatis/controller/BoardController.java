@@ -52,7 +52,4 @@ public class BoardController {
     public int searchBoard(@RequestParam String word){
         return boardService.searchBoard(word);
     }
-
-
-
 }
