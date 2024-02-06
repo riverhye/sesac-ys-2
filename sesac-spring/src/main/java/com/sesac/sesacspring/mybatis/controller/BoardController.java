@@ -32,7 +32,7 @@ public class BoardController {
     }
 
     // update
-    @PatchMapping("") // ----- FIX : url html 파일과 동일하게 (/ 삭제)
+    @PatchMapping("") // ----- FIX : url html 파일과 동일하게 (/ 삭제) (405 err)
     @ResponseBody
     public void patchBoard(@RequestBody BoardDTO boardDTO){
         boardService.patchBoard(boardDTO);
@@ -41,7 +41,7 @@ public class BoardController {
     // delete
     @DeleteMapping("")
     @ResponseBody
-    public void deleteBoard(@RequestParam int id){ // ----- FIX : RequestBody -> RequestParam
+    public void deleteBoard(@RequestParam int id){ // ----- FIX : RequestBody -> RequestParam (400 err)
         boardService.deleteBoard(id);
     }
 
