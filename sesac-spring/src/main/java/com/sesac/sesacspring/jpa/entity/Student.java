@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 // 1. application.properties 에 spring.jpa.hibernate.naming.physical-strategy = org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl 작성
 // 2. @Table(name="Student")
 
-// 데이터가 값 넣으면 ERR 발생하는 이유 : 각각 필요한 종류의 생성자가 달라서 어떤 걸 선택해야 할지 모름
+// DB에 데이터 넣으면 ERR 발생하는 이유 : 각각 필요한 종류의 생성자가 달라서 어떤 걸 선택해야 할지 모름
 @Entity // class Student() {} (빈 생성자) 필수!
 @Getter
 @Builder // 필드 전체가 있는 생성자가 필수!
@@ -44,6 +44,7 @@ public class Student {
     @Column
     @Enumerated(EnumType.STRING)
     private LoginType loginType; // uppercase 는 _(under bar)가 됨
+
     public enum LoginType {
         GOOGLE, KAKAO
     }
